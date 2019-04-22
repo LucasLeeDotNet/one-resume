@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ExperiencesModel from '../../models/ExperienceModel';
 import ExperienceComponent from './ExperienceComponent';
+import { StoreContext } from '../../context/StoreContext';
 
-export interface ExperiencessProps{ 
-    skills: ExperiencesModel[]
-}
-const ExperiencessComponent = ( props: ExperiencessProps )=> { 
-    const { skills } = props;
+export interface ExperiencesProps{}
+const ExperiencesComponent = ( props: ExperiencesProps )=> { 
+    const { state, dispatch, actions } = useContext(StoreContext);
+    const experiences: ExperiencesModel[] = state.experinces;
+
     return ( 
         <div>
-            { skills.map ( ( skill: ExperiencesModel ) => <ExperienceComponent {...skill} /> ) }
+            {  experiences.map ( ( skill: ExperiencesModel ) => <ExperienceComponent {...skill} /> ) }
         </div>
     );  
 };
 
-export default ExperiencessComponent;
+export default ExperiencesComponent;

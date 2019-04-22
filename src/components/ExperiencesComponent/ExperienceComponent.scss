@@ -1,0 +1,40 @@
+.company{ 
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 2rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.00833em;
+}
+
+.line1{ 
+    display: flex;
+}
+
+.date{ 
+    display: flex;
+    margin-left: 1rem;
+    align-items: flex-end;
+}
+
+.bullet{ 
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.25rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;  
+    margin-top: 0;  
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.bullet-icon{ 
+    margin-right: 0.8rem;
+}
+
+.exp{ 
+    margin-top: 4rem;
+}

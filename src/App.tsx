@@ -4,6 +4,7 @@ import './App.scss';
 import IntroComponent from './components/IntroComponent/IntroComponent';
 import SkillsComponent from './components/SkillsComponent/SkillsComponent';
 import HeaderComponent from './components/HeaderComponent/HeaderComponent';
+import ExperiencesComponent from './components/ExperiencesComponent/ExperiencesComponent';
 
 class App extends Component {
   render() {
@@ -13,7 +14,8 @@ class App extends Component {
         <div className="content-container">
           <div className="content">
             <IntroComponent/>
-            <SkillsComponent/> 
+            <SkillsComponent/>
+            <ExperiencesComponent/>
           </div>
         </div>
       </div>

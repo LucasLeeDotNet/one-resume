@@ -1,10 +1,12 @@
 import IntroModel from "../models/IntroModel";
 import SkillModel from "../models/SkillModel";
+import ExperienceModel from "../models/ExperienceModel";
 
 export interface initialStateModel { 
     actions:any,
     dispatch:any,
     editMode: boolean,
+    experinces?: ExperienceModel[],
     intro: IntroModel,
     skills: SkillModel[],
     state: any,
@@ -13,6 +15,45 @@ export const initialState: initialStateModel= {
     actions: undefined,
     dispatch: undefined,
     editMode: false,
+    experinces: [ 
+        { 
+            company: 'EAB Richmond',
+            position: 'Senior Web Developer',
+            date: 'May 2015 - Present',
+            bulletPoints: [
+                'Currently Leading frontend development for the new Marketing Platform',
+                'Lead Frontend Developer for adding Stripe payment system to Student Application',
+                'Lead Frontend Developer for creating a platform for sending out SMS to millions of Students',
+                'Lead Frontend Developer for adding Google Drive upload to Student Admission Application',
+                'Lead Frontend Developer for adding a passwordless login system for Student Application',
+            ]
+        },
+        { 
+            company: 'Point of Sales System for UMI Sushi Bistro, Short Pump',
+            date: 'Nov 2014 - May 2015',
+            position: 'Freelance',
+            bulletPoints: [
+                'Built a AngularJS Touch based POS system that has been in used to serve customer for the last 4 years',
+                'Provide functionality for reporting, ordering using a touch interface, table editor, split check payment, orders/receipt printing and menu creation',
+                'Still currently live in production'
+            ]
+        },   
+        { 
+            company: 'Shockoe | Mobile by Design',
+            date: 'Mar 2014 - Nov 2014',
+            position: 'Mobile Application Developer',
+            bulletPoints: [
+                'Built mobile application using a Javascript Platform (Appcelerator)',
+                'Built Full Stack Web Application with node'
+            ]
+        },        
+        { 
+            company: 'Virginia Commonwealth University',
+            date: '2009 - 2013',
+            position: `Computer Science, Bachelor's Degree`,
+            bulletPoints: []
+        },
+    ],
     intro: { 
         name: "Lucas Lee", 
         position: "Senior Web Developer", 
