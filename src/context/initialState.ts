@@ -21,11 +21,11 @@ export const initialState: initialStateModel= {
             position: 'Senior Web Developer',
             date: 'May 2015 - Present',
             bulletPoints: [
-                'Currently Leading frontend development for the new Marketing Platform',
-                'Lead Frontend Developer for adding Stripe payment system to Student Application',
-                'Lead Frontend Developer for creating a platform for sending out SMS to millions of Students',
-                'Lead Frontend Developer for adding Google Drive upload to Student Admission Application',
-                'Lead Frontend Developer for adding a passwordless login system for Student Application',
+                'Currently leading frontend development for the new Marketing Platform',
+                'Lead frontend development for adding Stripe payment system to Student Application',
+                'Lead frontend development for creating a platform for sending out SMS to large volume of Students',
+                'Lead frontend development for adding Google Drive upload to Student Admission Application',
+                'Lead frontend development for adding a passwordless login system for Student Application',
             ]
         },
         { 
@@ -34,7 +34,7 @@ export const initialState: initialStateModel= {
             position: 'Freelance',
             bulletPoints: [
                 'Built a AngularJS Touch based POS system that has been in used to serve customer for the last 4 years',
-                'Provide functionality for reporting, ordering using a touch interface, table editor, split check payment, orders/receipt printing and menu creation',
+                'Provided functionality for reporting, ordering using a touch interface, table editor, split check payment, orders/receipt printing and menu creation',
                 'Still currently live in production'
             ]
         },   
@@ -56,8 +56,8 @@ export const initialState: initialStateModel= {
     ],
     intro: { 
         name: "Lucas Lee", 
-        position: "Senior Web Developer", 
-        statement: `Passionate about Javascript, specializing in rapid development with strong sense of design. Lead frontend development on a new marketing platform for EAB. Experienced with a wide range of skillset that extends from frontend frameworks to containerized Devops and AWS.`
+        position: "Javascript Developer", 
+        statement: `Passionate about Javascript, specializing in rapid development with strong sense of design. Leading frontend development on a new marketing platform for EAB. Experienced with a wide range of skillset that extends from frontend frameworks to containerized Devops and AWS.`
     },
     skills: [
         { name: 'Javascript', level: 8.5, interest: 'Highest', icon: 'Js', lastUsed: 'Current'},
