@@ -13,7 +13,7 @@ class App extends Component {
         <div className="content-container">
           <div className="content">
             <IntroComponent/>
-            <SkillsComponent skills={[{ name: 'Javascript', level: 8.5, preferred: 'high', icon: 'Js'}]}/> 
+            <SkillsComponent/> 
           </div>
         </div>
       </div>

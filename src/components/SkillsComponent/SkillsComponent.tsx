@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SkillModel from '../../models/SkillModel';
 import SkillComponent from './SkillComponent';
+import './SkillsComponent.scss'
+import { StoreContext } from '../../context/StoreContext';
 
+export interface SkillsProps{}
 
-export interface SkillsProps{ 
-    skills: SkillModel[]
-}
 const SkillsComponent = ( props: SkillsProps )=> { 
-    const { skills } = props;
+    const { state, dispatch, actions } = useContext(StoreContext);
+    const skills:SkillModel[] = state.skills;
+    
     return ( 
-        <div>
+        <div className="skills-container">
             { skills.map ( ( skill: SkillModel ) => <SkillComponent key={skill.name} {...skill} /> ) }
         </div>
     );  
