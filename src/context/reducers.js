@@ -2,7 +2,8 @@
   
   const types = {
       TOGGLE_EDIT: 'TOGGLE_EDIT',
-      UPDATE_STATEMENT: 'UPDATE_STATEMENT'
+      UPDATE_POSITION: 'UPDATE_POSITION',
+      UPDATE_STATEMENT: 'UPDATE_STATEMENT',
   };
 
   const reducer = (state = initialState, action) => {
@@ -15,16 +16,12 @@
           case types.TOGGLE_EDIT:
               return {
                   ...state,
-                  editMode: action.editMode
+                  editMode: action.editMode,
+                  intro: { 
+                    ...state.intro,
+                }                  
               }
             case types.UPDATE_STATEMENT: 
-            console.log( { 
-                ...state,
-                intro: { 
-                    ...state.intro,
-                    statement: action.statement
-                }
-            });
               return { 
                   ...state,
                   intro: { 
@@ -32,6 +29,14 @@
                       statement: action.statement
                   }
               }
+            case types.UPDATE_POSITION:
+            return { 
+                ...state,
+                intro: { 
+                    ...state.intro,
+                    position: action.position
+                }
+            }          
           default:
               throw new Error('Unexpected action');
       }

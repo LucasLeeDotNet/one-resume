@@ -12,7 +12,7 @@ export const initialState: initialStateModel= {
     intro: { 
         name: "Lucas Lee", 
         position: "Senior Web Developer", 
-        statement: `Passionate about Javascript, specialize in rapid development with a design flair. Experienced with a wide range of skillset that extends from frontend to containerized devops and AWS. Lead frontend development on a new marketing platform for EAB.`
+        statement: `Passionate about Javascript, specializing in rapid development with a design flair. Lead frontend development on a new marketing platform for EAB. Experienced with a wide range of skillset that extends from frontend frameworks to containerized Devops and AWS.`
     },
     state: undefined,
 };

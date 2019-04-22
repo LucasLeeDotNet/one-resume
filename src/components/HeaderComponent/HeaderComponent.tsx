@@ -19,11 +19,11 @@ const HeaderComponent = () => {
             <AppBar position="static" color="default">
                 <Toolbar className="toolbar">
                     <Typography variant="h6" color="inherit">
-                        Resume                  
+                        One Resume                  
                     </Typography>
                     <div className="spacer" />
                     <Button variant="contained" color="primary" onClick={ handletoggleEditMode }>
-                        { state.editMode ? 'Edit': 'View' }
+                        { state.editMode ? 'Edit Mode': 'View Mode' }
                     </Button>  
                 </Toolbar>
             </AppBar>            

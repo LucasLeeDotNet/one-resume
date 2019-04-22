@@ -10,7 +10,7 @@ import { StoreProvider } from './context/StoreContext';
 
 ReactDOM.render(
     <StoreProvider>
-        <App/>
+        <App />
     </StoreProvider>, 
     document.getElementById('root')
 );
