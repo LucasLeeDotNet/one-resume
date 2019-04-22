@@ -1,11 +1,14 @@
-h1 {
+.name, .name-input input {
     color: rgba(0, 0, 0, 0.87);
-    margin: 32px 0 16px;
     font-size: 3.75rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 300;
     line-height: 1;
     letter-spacing: -0.00833em;
+}
+
+.name{ 
+    margin: 32px 0 16px;
 }
 
 .statement, .statement-input textarea{ 
@@ -36,6 +39,7 @@ h1 {
     letter-spacing: 0em;
 }
 
+
 .position{ 
     margin: 0 0 2rem;
 }
@@ -53,4 +57,9 @@ h1 {
 
 .extra-margin{
     margin-left: 65px;
+}
+
+.edit-outline{ 
+    border-left: 0.1rem solid blue;
+    padding-left: 0.5rem;;
 }

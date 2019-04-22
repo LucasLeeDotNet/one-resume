@@ -6,29 +6,28 @@ import { types } from '../../context/reducers';
 import { StoreContext } from '../../context/StoreContext';
 import IntroModel from '../../models/IntroModel';
 
-export interface IntroComponentProps {
-    name: string;
-    position: string;
-    statement: string;
-}
+export interface IntroComponentProps {}
 
 const IntroComponent = ( props: IntroComponentProps )=> { 
     const { state, dispatch, actions } = useContext(StoreContext);
     const intro: IntroModel = state.intro;
     const editMode: boolean = state.editMode;
     
-    const { name, position, statement } = props;
-
+    //Being Stubborn and wanted to included some local state rather than just having the toggles in the global state.
     useEffect( ()=>{ 
         if ( !editMode ){ 
             toggleStatementEditMode( false );
             togglePositionEditMode( false );
+            toggleNameEditMode( false );
         }
     });
+    
     //localstate
     const [ statementEditMode, toggleStatementEditMode ] = useState( false );
     const [ positionEditMode, togglePositionEditMode ] = useState( false );
-
+    const [ nameEditMode, toggleNameEditMode ] = useState( false );
+    
+    //Simple update handlers
     const handleStatementChange = ( event:any ) => { 
         dispatch( 
             { 
@@ -46,42 +45,103 @@ const IntroComponent = ( props: IntroComponentProps )=> {
             }
         );
     }
+
+    const handleNameChange = ( event:any ) => { 
+        dispatch( 
+            { 
+                type: types.UPDATE_NAME,
+                statement: event.target.value
+            }
+        );
+    }
+
     return ( 
         <div className="intro">
-            <h1>{name}</h1>
-            <div className={'position' + (positionEditMode && editMode ? ' extra-margin': '')}>
+            {/* Name 
+                --------
+            */}
+            <div className={'name' + (nameEditMode && editMode ? ' extra-margin': '') + (editMode && !nameEditMode ? ' edit-outline':'')}>
                 { 
-                    //Edit Icon
+                    /*  Check Button
+                        ------------
+                    */
+                    nameEditMode && editMode?
+                    <Fab className="edit-icon" color="secondary" aria-label="Edit" onClick={ ()=> toggleNameEditMode( !nameEditMode )} >
+                        <CheckIcon/>
+                    </Fab>:undefined
+                }
+                { nameEditMode && editMode ? 
+                    /*  Name Input
+                        ---------------
+                    */
+                    <TextField
+                        label="Edit Name"
+                        className="name-input"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={ handleNameChange }
+                        value={intro.name}
+                    />: 
+                    /*  Name View Mode
+                        ------------------
+                    */  
+                    <div onClick={ ()=> editMode && toggleNameEditMode( !nameEditMode )}>
+                        <h1 className="name">{intro.name}</h1>
+                    </div>
+                }
+            </div>            
+            {/* Position 
+                --------
+            */}
+            <div className={'position' + (positionEditMode && editMode ? ' extra-margin': '') + (editMode && !positionEditMode ? ' edit-outline':'')}>
+                { 
+                    /*  Check Button
+                        ------------
+                    */
                     positionEditMode && editMode?
                     <Fab className="edit-icon" color="secondary" aria-label="Edit" onClick={ ()=> togglePositionEditMode( !positionEditMode )} >
                         <CheckIcon/>
                     </Fab>:undefined
                 }
                 { positionEditMode && editMode ? 
-                    <div>
-                        <TextField
-                            label="Edit Position"
-                            className="position-input"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            onChange={ handlePositionChange }
-                            value={intro.position}
-                        />
-                    </div>: 
+                    /*  Position Input
+                        ---------------
+                    */
+                    <TextField
+                        label="Edit Position"
+                        className="position-input"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={ handlePositionChange }
+                        value={intro.position}
+                    />: 
+                    /*  Position View Mode
+                        ------------------
+                    */  
                     <div onClick={ ()=> editMode && togglePositionEditMode( !positionEditMode )}>
                         {intro.position}
                     </div>
                 }
             </div>
-            <div className={'statement' + (statementEditMode && editMode ? ' extra-margin': '')}>
+            {/* Statement 
+                --------
+            */}
+            <div className={'statement' + (statementEditMode && editMode ? ' extra-margin': '') + (editMode && !statementEditMode ? ' edit-outline':'')}>
                 { 
+                    /*  Check Button
+                        ------------
+                    */
                     statementEditMode && editMode ?
                     <Fab className="edit-icon" aria-label="Edit" onClick={ ()=> toggleStatementEditMode( !statementEditMode )} >
                         <CheckIcon/>
                     </Fab>:undefined
                 }
                 { statementEditMode && editMode ? 
+                    /*  Statement Input
+                        ---------------
+                    */
                     <TextField
                         label="Edit Statement"
                         fullWidth
@@ -96,11 +156,13 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                         onChange={ handleStatementChange }
                         value={intro.statement}
                     />: 
+                    /*  Statement View Mode
+                        -------------------
+                    */
                     <div onClick={ ()=> editMode && toggleStatementEditMode( !statementEditMode )}>
                         {intro.statement}
                     </div>
                 }
-       
             </div>
         </div>
     );

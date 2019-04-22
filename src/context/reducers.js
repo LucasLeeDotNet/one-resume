@@ -1,7 +1,10 @@
-  import { initialState } from './initialState';
-  
+  import {
+      initialState
+  } from './initialState';
+
   const types = {
       TOGGLE_EDIT: 'TOGGLE_EDIT',
+      UPDATE_NAME: 'UPDATE_NAME',
       UPDATE_POSITION: 'UPDATE_POSITION',
       UPDATE_STATEMENT: 'UPDATE_STATEMENT',
   };
@@ -17,31 +20,39 @@
               return {
                   ...state,
                   editMode: action.editMode,
-                  intro: { 
-                    ...state.intro,
-                }                  
+                  intro: {
+                      ...state.intro,
+                  }
               }
-            case types.UPDATE_STATEMENT: 
-              return { 
+          case types.UPDATE_NAME:
+              return {
                   ...state,
-                  intro: { 
+                  intro: {
+                      ...state.intro,
+                      name: action.name
+                  }
+              }
+          case types.UPDATE_POSITION:
+              return {
+                  ...state,
+                  intro: {
+                      ...state.intro,
+                      position: action.position
+                  }
+              }
+          case types.UPDATE_STATEMENT:
+              return {
+                  ...state,
+                  intro: {
                       ...state.intro,
                       statement: action.statement
                   }
               }
-            case types.UPDATE_POSITION:
-            return { 
-                ...state,
-                intro: { 
-                    ...state.intro,
-                    position: action.position
-                }
-            }          
           default:
               throw new Error('Unexpected action');
       }
   };
-  
+
   export {
       initialState,
       types,
