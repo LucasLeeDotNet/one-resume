@@ -8,7 +8,7 @@ export const useActions = (state:StateModel, dispatch: Function) => {
    * Search and updates an existing skill
    */
   function updateSkill( skill: SkillModel ){ 
-    const newSkills = state.skills.reduce( ( result: SkillModel[], _skill: SkillModel ):StateModel => {
+    const newSkills = state.skills.reduce( ( result: SkillModel[], _skill: SkillModel ) => {
       const updateSkill: SkillModel =  (_skill.id === skill.id )? skill : _skill;
       return [
         ...result,
