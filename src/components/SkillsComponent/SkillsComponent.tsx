@@ -12,21 +12,22 @@ const SkillsComponent = ( props: SkillsProps ) => {
     const selectedSkill: string =  state.selectedSkill;
     const editMode: boolean = state.editMode;
     const skills: SkillModel[] = state.skills;
-    
+    const newSkill = new SkillModel();
+
     const handleUpdateSkill = ( skill: SkillModel ):void => { 
         actions.updateSkill( skill );
-        handleSelectSkill( '' );
     }
 
     const handleSelectSkill = ( id: string ):void =>{ 
         dispatch( { 
             type: types.SELECT_SKILL,
-            selectedSkill: id
+            selectedSkill: id,
         } );
     }
 
     return ( 
         <div className={'skills-container'} >
+            <SkillComponent newFlag={true} editMode={editMode} selectedSkill={selectedSkill} key="new" onSelectSkill={ handleSelectSkill} {...newSkill} handleUpdateSkill={ handleUpdateSkill }/>
             { skills.map ( ( skill: SkillModel, index: number ) => 
                 <SkillComponent editMode={editMode} selectedSkill={selectedSkill} key={skill.id} onSelectSkill={ handleSelectSkill} {...skill} handleUpdateSkill={ handleUpdateSkill }/> ) 
             }
