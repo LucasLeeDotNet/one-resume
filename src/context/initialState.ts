@@ -14,6 +14,12 @@ export interface StateModel {
     state?: any,
 }
 
+export interface ManifestModel { 
+    experinces?: ExperienceModel[],
+    intro: IntroModel,
+    skills: SkillModel[],
+}
+
 const manifest = { 
     experinces: [ 
         { 

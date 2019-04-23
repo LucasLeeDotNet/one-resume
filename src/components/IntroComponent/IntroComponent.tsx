@@ -10,7 +10,7 @@ export interface IntroComponentProps {}
 
 const IntroComponent = ( props: IntroComponentProps )=> { 
     const { state, dispatch, actions } = useContext(StoreContext);
-    const intro: IntroModel = state.intro;
+    const { position, name, statement }: IntroModel = state.intro;
     const editMode: boolean = state.editMode;
     
     //Being Stubborn and wanted to included some local state rather than just having the toggles in the global state.
@@ -41,7 +41,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         dispatch( 
             { 
                 type: types.UPDATE_POSITION,
-                statement: event.target.value
+                position: event.target.value
             }
         );
     }
@@ -50,7 +50,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         dispatch( 
             { 
                 type: types.UPDATE_NAME,
-                statement: event.target.value
+                name: event.target.value
             }
         );
     }
@@ -66,7 +66,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                         ------------
                     */
                     nameEditMode && editMode?
-                    <Fab className="edit-icon" color="secondary" aria-label="Edit" onClick={ ()=> toggleNameEditMode( !nameEditMode )} >
+                    <Fab className="edit-icon" color="secondary" aria-label="Edit" onClick={ ()=> toggleNameEditMode( false )} >
                         <CheckIcon/>
                     </Fab>:undefined
                 }
@@ -81,13 +81,13 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                             shrink: true,
                         }}
                         onChange={ handleNameChange }
-                        value={intro.name}
+                        value={name}
                     />: 
                     /*  Name View Mode
                         ------------------
                     */  
                     <div onClick={ ()=> editMode && toggleNameEditMode( !nameEditMode )}>
-                        <h1 className="name">{intro.name}</h1>
+                        <h1 className="name">{name}</h1>
                     </div>
                 }
             </div>            
@@ -100,7 +100,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                         ------------
                     */
                     positionEditMode && editMode?
-                    <Fab className="edit-icon" color="secondary" aria-label="Edit" onClick={ ()=> togglePositionEditMode( !positionEditMode )} >
+                    <Fab className="edit-icon" color="secondary" aria-label="Edit" onClick={ ()=> togglePositionEditMode( false )} >
                         <CheckIcon/>
                     </Fab>:undefined
                 }
@@ -115,13 +115,13 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                             shrink: true,
                         }}
                         onChange={ handlePositionChange }
-                        value={intro.position}
+                        value={position}
                     />: 
                     /*  Position View Mode
                         ------------------
                     */  
                     <div onClick={ ()=> editMode && togglePositionEditMode( !positionEditMode )}>
-                        {intro.position}
+                        {position}
                     </div>
                 }
             </div>
@@ -134,7 +134,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                         ------------
                     */
                     statementEditMode && editMode ?
-                    <Fab className="edit-icon" aria-label="Edit" onClick={ ()=> toggleStatementEditMode( !statementEditMode )} >
+                    <Fab className="edit-icon" aria-label="Edit" onClick={ ()=> toggleStatementEditMode( false )} >
                         <CheckIcon/>
                     </Fab>:undefined
                 }
@@ -154,13 +154,13 @@ const IntroComponent = ( props: IntroComponentProps )=> {
                             shrink: true,
                         }}
                         onChange={ handleStatementChange }
-                        value={intro.statement}
+                        value={statement}
                     />: 
                     /*  Statement View Mode
                         -------------------
                     */
                     <div onClick={ ()=> editMode && toggleStatementEditMode( !statementEditMode )}>
-                        {intro.statement}
+                        {statement}
                     </div>
                 }
             </div>
