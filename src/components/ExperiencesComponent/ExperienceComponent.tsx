@@ -15,7 +15,7 @@ const ExperinceComponent = ( props: ExperinceComponentProps )=> {
                 <div className="date">{date.toUpperCase()}</div>
             </div>
             <h2>{position}</h2>
-            {bulletPoints.map( point => <div className="bullet"><AddIcon className="bullet-icon"/> {point}</div> ) }
+            {bulletPoints.map( ( point: string, index: number ) => <div key={index} className="bullet"><AddIcon className="bullet-icon"/> {point}</div> ) }
         </div>
     );
 }

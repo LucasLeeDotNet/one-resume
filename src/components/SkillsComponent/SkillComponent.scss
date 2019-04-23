@@ -37,3 +37,27 @@
 .skill-name{ 
     font-size: 1.5rem;
 }
+
+.text-input{ 
+    margin: 0.5rem !important;
+}
+
+.text-input--small{ 
+    width: 6rem;    
+}
+
+div.select-input{ 
+    margin: 0.5rem;
+}
+
+.check-button{ 
+    background-color: #690 !important;
+    color: white !important;
+    margin-right: 0.5rem !important;
+}
+
+.input-container{ 
+    display:flex;
+    margin-left: 0.5rem;
+    align-items: center;
+}

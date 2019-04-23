@@ -1,17 +1,20 @@
 import IntroModel from "../models/IntroModel";
 import SkillModel from "../models/SkillModel";
 import ExperienceModel from "../models/ExperienceModel";
+import uuid from 'uuid/v4';
 
-export interface initialStateModel { 
+export interface StateModel { 
     actions:any,
     dispatch:any,
     editMode: boolean,
     experinces?: ExperienceModel[],
     intro: IntroModel,
     skills: SkillModel[],
+    selectedSkill: string,
     state: any,
 }
-export const initialState: initialStateModel= { 
+
+export const initialState: StateModel= { 
     actions: undefined,
     dispatch: undefined,
     editMode: false,
@@ -59,6 +62,7 @@ export const initialState: initialStateModel= {
         position: "Javascript Developer", 
         statement: `Passionate about Javascript, specializing in rapid development with strong sense of design. Leading frontend development on a new marketing platform for EAB. Experienced with a wide range of skillset that extends from frontend frameworks to containerized Devops and AWS.`
     },
+    selectedSkill: '',
     skills: [
         { name: 'Javascript', level: 8.5, interest: 'Highest', icon: 'Js', lastUsed: 'Current'},
         { name: 'Typescript', level: 7, interest: 'High', icon: 'Ts', lastUsed: 'Current'},
@@ -76,6 +80,6 @@ export const initialState: initialStateModel= {
         { name: 'Coldfusion', level: 6, interest: 'Low', icon: '', lastUsed: 'This Year'},
         { name: 'CSS', level: 7, interest: 'High', icon: 'Css', lastUsed: 'Current'},
 
-    ],
+    ].map( ( skill ) => { return { ...skill, id: uuid() }} ),
     state: undefined,
 };

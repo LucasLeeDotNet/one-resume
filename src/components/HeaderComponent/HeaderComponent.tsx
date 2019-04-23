@@ -30,7 +30,7 @@ const HeaderComponent = () => {
                             -----------*/
                     }
                     <Button variant="contained" onClick={ handletoggleEditMode }>
-                        { state.editMode ? ['Edit Mode ',<EditIcon className="mode-icon"/>]: ['View Mode', <VisibilityIcon className="mode-icon"/>] } 
+                        { state.editMode ? ['Edit Mode ',<EditIcon className="mode-icon"/>] : ['View Mode', <VisibilityIcon className="mode-icon"/>] } 
                     </Button>  
                 </Toolbar>
             </AppBar>            
