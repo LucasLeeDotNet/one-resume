@@ -1,12 +1,20 @@
+//React
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+//Context
 import { StoreProvider } from './context/StoreContext';
+
+//Component
+import App from './App';
+
+//FontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+
+//Style
+import './index.css';
 
 ReactDOM.render(
     <StoreProvider>

@@ -1,7 +1,14 @@
+//React
 import React from 'react';
-import ExperienceModel from '../../models/ExperienceModel';
-import './ExperienceComponent.scss'
+
+//Material UI
 import AddIcon from '@material-ui/icons/Add';
+
+//Model
+import ExperienceModel from '../../models/ExperienceModel';
+
+//Style
+import './ExperienceComponent.scss'
 
 export interface ExperinceComponentProps extends ExperienceModel{}
 

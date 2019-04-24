@@ -1,9 +1,18 @@
+//React
 import React, { useContext } from 'react';
-import SkillModel from '../../models/SkillModel';
-import SkillComponent from './SkillComponent';
-import './SkillsComponent.scss'
+
+//Context
 import { StoreContext } from '../../context/StoreContext';
 import { types } from '../../context/reducers';
+
+//Component
+import SkillComponent from './SkillComponent';
+
+//Model
+import SkillModel from '../../models/SkillModel';
+
+//Style
+import './SkillsComponent.scss'
 
 export interface SkillsProps{}
 
@@ -27,9 +36,9 @@ const SkillsComponent = ( props: SkillsProps ) => {
 
     return ( 
         <div className={'skills-container'} >
-            <SkillComponent newFlag={true} editMode={editMode} selectedSkill={selectedSkill} key="new" onSelectSkill={ handleSelectSkill} {...newSkill} handleUpdateSkill={ handleUpdateSkill }/>
-            { skills.map ( ( skill: SkillModel, index: number ) => 
-                <SkillComponent editMode={editMode} selectedSkill={selectedSkill} key={skill.id} onSelectSkill={ handleSelectSkill} {...skill} handleUpdateSkill={ handleUpdateSkill }/> ) 
+            <SkillComponent {...newSkill} newFlag={true} editMode={editMode} selectedSkill={selectedSkill} key="new" onSelectSkill={ handleSelectSkill}  handleUpdateSkill={ handleUpdateSkill }/>
+            { skills.map ( ( skill: SkillModel ) => 
+                <SkillComponent {...skill} editMode={editMode} selectedSkill={selectedSkill} key={skill.id} onSelectSkill={ handleSelectSkill}  handleUpdateSkill={ handleUpdateSkill }/> ) 
             }
         </div>
     );  

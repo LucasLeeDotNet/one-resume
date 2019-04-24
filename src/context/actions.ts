@@ -1,6 +1,11 @@
+//Context
 import { types } from "./reducers";
+
+//Model
 import SkillModel from "../models/SkillModel";
 import { StateModel } from "./initialState";
+
+//Utility
 import uuid from 'uuid/v4';
 
 export const useActions = (state:StateModel, dispatch: Function) => {
@@ -34,7 +39,21 @@ export const useActions = (state:StateModel, dispatch: Function) => {
     } )
   }
 
+
+
+  /**
+   * Utility function to generate generic snackbar
+   */
+  function snackbar( message:string, hideDuration?: number){ 
+    dispatch( { 
+      type: types.SHOW_GENERIC_SNACKBAR,
+      hideDuration,
+      message,
+    } )
+  }
+
   return {
+    snackbar,
     updateSkill
   };
 };

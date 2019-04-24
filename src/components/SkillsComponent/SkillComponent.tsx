@@ -1,12 +1,21 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
-import SkillModel from '../../models/SkillModel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as brandIcons from "@fortawesome/free-brands-svg-icons";
-import './SkillComponent.scss';
+//React
+import React, { useState, SyntheticEvent } from 'react';
+
+//Material UI
 import { LinearProgress, TextField, FormControl, InputLabel, Select, MenuItem, Fab } from '@material-ui/core';
+import * as brandIcons from "@fortawesome/free-brands-svg-icons";
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import AddIcon from '@material-ui/icons/Add';
+
+//FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+//Model
+import SkillModel from '../../models/SkillModel';
+
+//Style
+import './SkillComponent.scss';
 
 export interface SkillProps extends SkillModel{
     editMode: boolean,

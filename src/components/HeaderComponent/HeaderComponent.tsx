@@ -1,12 +1,23 @@
+//React
 import React, { useContext, SyntheticEvent, useEffect, useState } from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+
+//Context
 import { StoreContext } from '../../context/StoreContext';
 import { types } from '../../context/reducers';
+
+//Material
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import ExportIcon from '@material-ui/icons/ImportExport';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import './HeaderComponent.scss';
+
+//Component
 import { ExportDialogComponent } from '../dialogs/ExportDialogComponent/ExportDialogComponent';
+
+//Style
+import './HeaderComponent.scss';
+
+
 
 const HeaderComponent = () => { 
     const { state, dispatch, actions } = useContext(StoreContext);
@@ -14,7 +25,7 @@ const HeaderComponent = () => {
     let manifest;
     useEffect( ()=> {  
         manifest = { 
-            experinces: state.experinces,
+            experiences: state.experiences,
             intro: state.intro,
             skills: state.skills, 
         };

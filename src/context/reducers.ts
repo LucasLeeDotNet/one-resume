@@ -1,9 +1,12 @@
+//Model
 import {
-    initialState
+    initialState, StateModel
 } from './initialState';
 
 const types = {
+    HIDE_GENERIC_SNACKBAR: 'HIDE_GENERIC_SNACKBAR',
     SELECT_SKILL: 'SELECT_SKILL',
+    SHOW_GENERIC_SNACKBAR: 'SHOW_GENERIC_SNACKBAR',
     TOGGLE_EDIT: 'TOGGLE_EDIT',
     UPDATE_NAME: 'UPDATE_NAME',
     UPDATE_POSITION: 'UPDATE_POSITION',
@@ -11,18 +14,50 @@ const types = {
     UPDATE_STATEMENT: 'UPDATE_STATEMENT',
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state:StateModel = initialState, action:any ):StateModel => {
     console.log({
         oldState: state,
         type: action.type,
-        payload: action.payload
     });
     switch (action.type) {
+        /**
+         * Hide the generic snackbar
+         */
+        case types.HIDE_GENERIC_SNACKBAR:
+          return { 
+            ...state,
+            genericSnackbar: { 
+              ...state.genericSnackbar,
+              open: false
+            }
+          }
+
+        /**
+         * Select a skill with mouse click
+         */
         case types.SELECT_SKILL:
             return {
                 ...state,
                 selectedSkill: action.selectedSkill
             }
+
+        /**
+         * Show the generic snackbar
+         */
+        case types.SHOW_GENERIC_SNACKBAR:
+        return { 
+          ...state,
+          genericSnackbar: { 
+            ...state.genericSnackbar,
+            open: true,
+            hideDuration: action.hideDuration || state.genericSnackbar.hideDuration,
+            message: action.message
+          }
+        }
+
+        /**
+         * Toggle global edit mode
+         */
         case types.TOGGLE_EDIT:
             return {
                 ...state,
@@ -32,6 +67,10 @@ const reducer = (state = initialState, action) => {
                 }, 
                 selectedSkill: state.editMode === true ? '' : state.selectedSkill
             }
+
+        /**
+         * Update the name Field
+         */
         case types.UPDATE_NAME:
             return {
                 ...state,
@@ -41,12 +80,9 @@ const reducer = (state = initialState, action) => {
                 }
             }
 
-        case types.UPDATE_SKILL:
-            return { 
-                ...state,
-                skills: action.skills,
-                selectedSkill: ''                
-            }
+        /**
+         * Update the position field
+         */
         case types.UPDATE_POSITION:
             return {
                 ...state,
@@ -55,6 +91,21 @@ const reducer = (state = initialState, action) => {
                     position: action.position
                 }
             }
+        
+        /**
+         * Update a particular skill
+         */
+        case types.UPDATE_SKILL:
+            return { 
+                ...state,
+                skills: action.skills,
+                selectedSkill: ''                
+            }
+        
+
+        /**
+         * Update the statement field
+         */
         case types.UPDATE_STATEMENT:
             return {
                 ...state,

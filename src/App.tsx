@@ -1,10 +1,16 @@
+//React
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.scss';
+
+//Component
 import IntroComponent from './components/IntroComponent/IntroComponent';
 import SkillsComponent from './components/SkillsComponent/SkillsComponent';
 import HeaderComponent from './components/HeaderComponent/HeaderComponent';
 import ExperiencesComponent from './components/ExperiencesComponent/ExperiencesComponent';
+import GenericSnackbarComponent from './components/snackbars/GenericSnackbarComponent';
+
+//Style
+import './App.scss';
+
 
 class App extends Component {
   render() {
@@ -18,6 +24,7 @@ class App extends Component {
             <ExperiencesComponent/>
           </div>
         </div>
+        <GenericSnackbarComponent/>
       </div>
     );
   }

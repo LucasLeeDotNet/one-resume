@@ -1,8 +1,18 @@
+//React
 import React, { SyntheticEvent, useContext, useEffect } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
-import { ManifestModel } from '../../../context/initialState';
+
+//Context
 import { StoreContext } from '../../../context/StoreContext';
+
+//Material UI
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
+
+//Models
+import { ManifestModel } from '../../../context/initialState';
+
+//Styles
 import './ExportDialogComponent.scss';
+
 declare var navigator: NavigatorModel;
 
 export interface ExportDialogComponentModel{ 
@@ -12,7 +22,7 @@ export interface ExportDialogComponentModel{
 }
 
 interface NavigatorModel{ 
-  clipbaord: any;
+    clipboard: any;
 }
 
 export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => { 
@@ -20,12 +30,12 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   const { openState, onClose } = props;
   
   const handleCopyEvent = () => { 
-    navigator.clipbaord.writeText(JSON.stringify({intro: state.intro, skills: state.skills, experinces: state.experinces}, null, 4)).then(function() {
-      /* clipboard successfully set */
+    navigator.clipboard.writeText('const manifest:ManifestModel = ' + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)).then(function() {
+      console.log( 'ok' );
+      actions.snackbar( 'Manifest copied to clipboard' );
     }, function() {
-      /* clipboard write failed */
+      actions.snackbar( 'Manifest copy to clipboard failed, try manually copy and paste the manifest' );
     });
-    // document.dispatchEvent(pasteEvent);
   }
   return ( 
     <Dialog
@@ -37,7 +47,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
       <DialogTitle id="alert-dialog-title">Export Manifest Datra</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          <pre className="export-data">{JSON.stringify({intro: state.intro, skills: state.skills, experinces: state.experinces}, null, 4)}</pre>
+          <pre className="export-data">{JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)}</pre>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

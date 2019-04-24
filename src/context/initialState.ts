@@ -1,27 +1,39 @@
+//Model
+import ExperienceModel from "../models/ExperienceModel";
 import IntroModel from "../models/IntroModel";
 import SkillModel from "../models/SkillModel";
-import ExperienceModel from "../models/ExperienceModel";
+import GenericSnackbarModel from "../models/GenericSnackbarModel";
+
+//Utility
 import uuid from 'uuid/v4';
 
 export interface StateModel { 
     actions?:any,
     dispatch?:any,
     editMode: boolean,
-    experinces?: ExperienceModel[],
+    experiences?: ExperienceModel[],
+    genericSnackbar: GenericSnackbarModel,
     intro: IntroModel,
     skills: SkillModel[],
     selectedSkill: string,
     state?: any,
 }
 
+/**
+ * Defines the interface for the user pastable manifest
+ */
 export interface ManifestModel { 
-    experinces?: ExperienceModel[],
+    experiences?: ExperienceModel[],
     intro: IntroModel,
     skills: SkillModel[],
 }
 
-const manifest = { 
-    experinces: [ 
+/**
+ * Insert Manifest Below
+ * --------------------------------------------------------------
+ */
+const manifest:ManifestModel = { 
+    experiences: [ 
         { 
             company: 'EAB Richmond',
             position: 'Senior Web Developer',
@@ -83,10 +95,15 @@ const manifest = {
         { name: 'CSS', level: 7, interest: 'High', icon: 'Css', lastUsed: 'Current'},
     ]
 };
+/**
+ * Insert Manifest Above ^
+ * --------------------------------------------------------------
+ */
 
 export const initialState: StateModel = { 
     ...manifest, 
-    skills: manifest.skills.map( ( skill ) => { return { ...skill, id: uuid() }} ),
     editMode: false,
+    genericSnackbar: new GenericSnackbarModel(),
+    skills: manifest.skills.map( ( skill ) => { return { ...skill, id: uuid() }} ),
     selectedSkill: '',
 };
