@@ -12,7 +12,7 @@ export interface ExportDialogComponentModel{
 }
 
 interface NavigatorModel{ 
-  clipbaord: any;
+  clipboard: any;
 }
 
 export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => { 
@@ -20,7 +20,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   const { openState, onClose } = props;
   
   const handleCopyEvent = () => { 
-    navigator.clipbaord.writeText(JSON.stringify({intro: state.intro, skills: state.skills, experinces: state.experinces}, null, 4)).then(function() {
+    navigator.clipboard.writeText(JSON.stringify({intro: state.intro, skills: state.skills, experinces: state.experinces}, null, 4)).then(function() {
       /* clipboard successfully set */
     }, function() {
       /* clipboard write failed */
