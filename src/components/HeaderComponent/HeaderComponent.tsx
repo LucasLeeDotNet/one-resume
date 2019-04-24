@@ -5,7 +5,6 @@ import { types } from '../../context/reducers';
 import EditIcon from '@material-ui/icons/Edit';
 import ExportIcon from '@material-ui/icons/ImportExport';
 import VisibilityIcon from '@material-ui/icons/Visibility';
-
 import './HeaderComponent.scss';
 import { ExportDialogComponent } from '../dialogs/ExportDialogComponent/ExportDialogComponent';
 
