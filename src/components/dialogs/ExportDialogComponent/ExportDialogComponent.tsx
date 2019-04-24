@@ -25,8 +25,15 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   const { state, dispatch, actions } = useContext(StoreContext);
   const { openState, onClose } = props;
   
+  const exportPrefix = `
+  /**
+   * Replace the content of this file with the manifest data copied by the export button
+   */
+  import ManifestModel from './src/models/ManifestModel';
+  
+  export const manifest:ManifestModel = `
   const handleCopyEvent = () => { 
-    navigator.clipboard.writeText('const manifest:ManifestModel = ' + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)).then(function() {
+    navigator.clipboard.writeText(exportPrefix + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)).then(function() {
       actions.snackbar( 'Manifest copied to clipboard' );
     }, function() {
       actions.snackbar( 'Manifest copy to clipboard failed, try manually copy and paste the manifest' );
@@ -34,6 +41,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   }
   return ( 
     <Dialog
+      className="export-dialog"
       open={openState}
       onClose={onClose}
       aria-labelledby="alert-dialog-title"
@@ -42,7 +50,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
       <DialogTitle id="alert-dialog-title">Export Manifest Data</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          <pre className="export-data">{JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)}</pre>
+          <pre className="export-data">{exportPrefix + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)}</pre>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

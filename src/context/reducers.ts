@@ -8,6 +8,7 @@ const types = {
     SELECT_SKILL: 'SELECT_SKILL',
     SHOW_GENERIC_SNACKBAR: 'SHOW_GENERIC_SNACKBAR',
     TOGGLE_EDIT: 'TOGGLE_EDIT',
+    TOGGLE_PRINT: 'TOGGLE_PRINT',
     UPDATE_NAME: 'UPDATE_NAME',
     UPDATE_POSITION: 'UPDATE_POSITION',
     UPDATE_SKILL: 'UPDATE_SKILL',
@@ -64,6 +65,17 @@ const reducer = (state:StateModel = initialState, action:any ):StateModel => {
                 }, 
                 selectedSkill: state.editMode === true ? '' : state.selectedSkill
             }
+
+        /**
+         * Toggle element adjustment to enable the page for print
+         */
+        case types.TOGGLE_PRINT:
+        return {
+            ...state,
+            printMode: action.printMode, 
+            editMode: false
+        }
+
 
         /**
          * Update the name Field

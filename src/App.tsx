@@ -1,5 +1,5 @@
 //React
-import React, { Component } from 'react';
+import React, { Component, useState, useContext } from 'react';
 
 //Component
 import IntroComponent from './components/IntroComponent/IntroComponent';
@@ -10,24 +10,32 @@ import GenericSnackbarComponent from './components/snackbars/GenericSnackbarComp
 
 //Style
 import './App.scss';
+import { StoreContext } from './context/StoreContext';
 
+const App = ( props: any ) => {
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <HeaderComponent />
-        <div className="content-container">
-          <div className="content">
-            <IntroComponent/>
-            <SkillsComponent/>
-            <ExperiencesComponent/>
-          </div>
-        </div>
-        <GenericSnackbarComponent/>
-      </div>
-    );
+  const { state, dispatch, actions } = useContext( StoreContext );
+
+  /**
+   * Readded toolbar clicking in the window after printout
+   */
+  const handlePrintModeClick = () => { 
+    actions.handlePrintModeToggle( false );
   }
+
+  return (
+    <div className="App">
+      <HeaderComponent />
+      <div className="content-container" onClick={ handlePrintModeClick }>
+        <div className="content">
+          <IntroComponent/>
+          <SkillsComponent/>
+          <ExperiencesComponent/>
+        </div>
+      </div>
+      <GenericSnackbarComponent/>
+    </div>
+  );
 }
 
 export default App;

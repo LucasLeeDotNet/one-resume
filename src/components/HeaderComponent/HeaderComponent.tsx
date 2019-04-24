@@ -17,12 +17,21 @@ import { ExportDialogComponent } from '../dialogs/ExportDialogComponent/ExportDi
 //Style
 import './HeaderComponent.scss';
 
+
 const HeaderComponent = () => { 
     const { state, dispatch, actions } = useContext(StoreContext);
 
     //local state
     const [ exportModalState, toggleExportModal ] = useState( false );
-    
+
+    /**
+     * Opening of the export dialog is handled as a local state
+     * @param event Object
+     */
+    const handleExportDialogClose = ( event: SyntheticEvent ):void => { 
+      toggleExportModal( false );
+  }
+
     /**
      * Toggle global export mode
      */
@@ -34,14 +43,14 @@ const HeaderComponent = () => {
     };
 
     /**
-     * Opening of the export dialog is handled as a local state
-     * @param event Object
+     * Remove toolbar for print out
      */
-    const handleExportDialogClose = ( event: SyntheticEvent ):void => { 
-        toggleExportModal( false );
+    const handlePrintModeClick = () => { 
+      actions.handlePrintModeToggle( true );
     }
 
     return (
+        state.printMode ? <div></div>:
         <div className="header-container" >
             <AppBar position="static" color="default">
                 <Toolbar className="toolbar">
@@ -50,11 +59,24 @@ const HeaderComponent = () => {
                     </Typography>
                     <div className="spacer" />
 
+                    <Button variant="contained" onClick={ handlePrintModeClick }>
+                        <ExportIcon/> Hide Toolbar for Print
+                    </Button>
+
+                    { 
+                        /*  Generate PDF Button
+                            ------------------*/
+                    }
+                    <Button className="right-menu-button"variant="contained" onClick={ actions.handlePrintPdf }>
+                        <ExportIcon/> Generate PDF (Has Issues)
+                    </Button>
+
+
                     { 
                         /*  Export Data Button
                             ------------------*/
                     }
-                    <Button variant="contained" onClick={ () => toggleExportModal( !exportModalState ) }>
+                    <Button className="right-menu-button" variant="contained" onClick={ () => toggleExportModal( !exportModalState ) }>
                         <ExportIcon/> Export Data
                     </Button>
 
