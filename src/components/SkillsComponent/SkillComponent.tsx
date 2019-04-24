@@ -82,10 +82,10 @@ const SkillComponent = ( props: SkillProps )=> {
                 *   Static Preview of the skill
                 *   ---------------------------
                 */
-                [ <div className="icon-container">
-                    <FontAwesomeIcon className="skill-icon" icon={ brandIconSet[ faIcon ]}/>
+                [ <div className="icon-container" key="iconContainer">
+                    { icon !== '' ? <FontAwesomeIcon className="skill-icon" icon={ brandIconSet[ faIcon ]}/> : ''}
                 </div>,
-                <div>
+                <div key="skillContainer">
                     <div className="skill-name">{name}</div>
                     <div className="skill-progress-container">
                         <div className="skill-row"> <span className="skill-label">Skill </span> <div className="spacer"/>{level}/10 </div>

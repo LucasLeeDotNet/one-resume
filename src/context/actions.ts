@@ -31,6 +31,7 @@ export const useActions = (state:StateModel, dispatch: Function) => {
       //Adjust the margin for print
       const $content:any = document.querySelector( ".content" );
       $content.style.margin = '-4rem';
+      snackbar( 'Click anywhere on the screen to turn off print mode' );
     }
 
   }

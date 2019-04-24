@@ -87,7 +87,7 @@ const HeaderComponent = () => {
                             -----------*/
                     }
                     <Button className="right-menu-button" variant="contained" onClick={ handletoggleEditMode }>
-                        { state.editMode ? ['Edit Mode ',<EditIcon className="mode-icon"/>] : ['View Mode', <VisibilityIcon className="mode-icon"/>] } 
+                        { state.editMode ? ['Edit Mode ',<EditIcon key="editMode" className="mode-icon"/>] : ['View Mode', <VisibilityIcon key="visibilityIcon" className="mode-icon"/>] } 
                     </Button>  
                 </Toolbar>
             </AppBar>
