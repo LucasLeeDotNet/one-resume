@@ -9,7 +9,9 @@ import { types } from '../../context/reducers';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import ExportIcon from '@material-ui/icons/ImportExport';
+import PrintIcon from '@material-ui/icons/Print';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 //Component
 import { ExportDialogComponent } from '../dialogs/ExportDialogComponent/ExportDialogComponent';
@@ -55,12 +57,12 @@ const HeaderComponent = () => {
             <AppBar position="static" color="default">
                 <Toolbar className="toolbar">
                     <Typography variant="h6" color="inherit">
-                        One Resume
+                        Resume
                     </Typography>
                     <div className="spacer" />
 
                     <Button variant="contained" onClick={ handlePrintModeClick }>
-                        <ExportIcon/> Hide Toolbar for Print
+                        <PrintIcon/> Hide Toolbar for Print
                     </Button>
 
                     { 
@@ -68,7 +70,7 @@ const HeaderComponent = () => {
                             ------------------*/
                     }
                     <Button className="right-menu-button"variant="contained" onClick={ actions.handlePrintPdf }>
-                        <ExportIcon/> Generate PDF (Has Issues)
+                        <DescriptionIcon/> Generate PDF (Has Issues)
                     </Button>
 
 
