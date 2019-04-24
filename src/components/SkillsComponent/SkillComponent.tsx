@@ -73,7 +73,7 @@ const SkillComponent = ( props: SkillProps )=> {
 
     return ( 
         ( !newFlag || newFlag && editMode ) ? 
-        <div className="skill-container" onClick={ ()=> editMode && onSelectSkill( selectedSkill !== id ? id : selectedSkill ) }>
+        <div className={'skill-container' + (editMode ? ' clickable' : '')} onClick={ ()=> editMode && onSelectSkill( selectedSkill !== id ? id : selectedSkill ) }>
             { newFlag ?
                 <div className="add-button__container">
                     <AddIcon className="add-button"/>

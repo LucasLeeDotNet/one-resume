@@ -7,9 +7,6 @@ import { StoreContext } from '../../../context/StoreContext';
 //Material UI
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
 
-//Models
-import { ManifestModel } from '../../../context/initialState';
-
 //Styles
 import './ExportDialogComponent.scss';
 
@@ -18,7 +15,6 @@ declare var navigator: NavigatorModel;
 export interface ExportDialogComponentModel{ 
   openState: boolean,
   onClose: ( event:SyntheticEvent )=>void,
-  manifest?: ManifestModel
 }
 
 interface NavigatorModel{ 
@@ -31,7 +27,6 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   
   const handleCopyEvent = () => { 
     navigator.clipboard.writeText('const manifest:ManifestModel = ' + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)).then(function() {
-      console.log( 'ok' );
       actions.snackbar( 'Manifest copied to clipboard' );
     }, function() {
       actions.snackbar( 'Manifest copy to clipboard failed, try manually copy and paste the manifest' );
@@ -44,7 +39,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Export Manifest Datra</DialogTitle>
+      <DialogTitle id="alert-dialog-title">Export Manifest Data</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           <pre className="export-data">{JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)}</pre>

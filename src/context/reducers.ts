@@ -15,11 +15,8 @@ const types = {
 };
 
 const reducer = (state:StateModel = initialState, action:any ):StateModel => {
-    console.log({
-        oldState: state,
-        type: action.type,
-    });
-    switch (action.type) {
+
+  switch (action.type) {
         /**
          * Hide the generic snackbar
          */

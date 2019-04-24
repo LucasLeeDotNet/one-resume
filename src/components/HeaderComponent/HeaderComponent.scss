@@ -13,3 +13,9 @@
  button.right-menu-button{ 
     margin-left: 0.5rem;
 }
+
+.header-container{ 
+  position: fixed; 
+  width: 100%;
+  z-index: 100;
+}

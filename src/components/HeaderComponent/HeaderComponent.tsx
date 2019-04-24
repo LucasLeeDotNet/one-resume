@@ -17,33 +17,32 @@ import { ExportDialogComponent } from '../dialogs/ExportDialogComponent/ExportDi
 //Style
 import './HeaderComponent.scss';
 
-
-
 const HeaderComponent = () => { 
     const { state, dispatch, actions } = useContext(StoreContext);
-    const [ exportModalState, toggleExportModal ] = useState( false );
-    let manifest;
-    useEffect( ()=> {  
-        manifest = { 
-            experiences: state.experiences,
-            intro: state.intro,
-            skills: state.skills, 
-        };
-    } )
 
-    const handletoggleEditMode = () => { 
+    //local state
+    const [ exportModalState, toggleExportModal ] = useState( false );
+    
+    /**
+     * Toggle global export mode
+     */
+    const handletoggleEditMode = ():void => { 
         dispatch( { 
             type: types.TOGGLE_EDIT,
             editMode: !state.editMode
         } );
     };
 
-    const handleExportDialogClose = ( event: SyntheticEvent ) => { 
+    /**
+     * Opening of the export dialog is handled as a local state
+     * @param event Object
+     */
+    const handleExportDialogClose = ( event: SyntheticEvent ):void => { 
         toggleExportModal( false );
     }
 
     return (
-        <div>
+        <div className="header-container" >
             <AppBar position="static" color="default">
                 <Toolbar className="toolbar">
                     <Typography variant="h6" color="inherit">
@@ -51,8 +50,12 @@ const HeaderComponent = () => {
                     </Typography>
                     <div className="spacer" />
 
+                    { 
+                        /*  Export Data Button
+                            ------------------*/
+                    }
                     <Button variant="contained" onClick={ () => toggleExportModal( !exportModalState ) }>
-                        <ExportIcon/> Export
+                        <ExportIcon/> Export Data
                     </Button>
 
                     { 
@@ -64,7 +67,7 @@ const HeaderComponent = () => {
                     </Button>  
                 </Toolbar>
             </AppBar>
-            <ExportDialogComponent onClose={ handleExportDialogClose} manifest={manifest} openState={exportModalState} />
+            <ExportDialogComponent onClose={ handleExportDialogClose} openState={exportModalState} />
         </div>
     );
 };
