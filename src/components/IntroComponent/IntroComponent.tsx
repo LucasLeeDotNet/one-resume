@@ -1,5 +1,5 @@
 //React
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, ChangeEvent } from 'react';
 
 //Context
 import { StoreContext } from '../../context/StoreContext';
@@ -39,7 +39,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
     const [ nameEditMode, toggleNameEditMode ] = useState( false );
     
     //Simple update handlers
-    const handleStatementChange = ( event:any ) => { 
+    const handleStatementChange = ( event:ChangeEvent<HTMLInputElement> ) => { 
         dispatch( 
             { 
                 type: types.UPDATE_STATEMENT,
@@ -48,7 +48,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         );
     };
 
-    const handlePositionChange = ( event:any ) => { 
+    const handlePositionChange = ( event:ChangeEvent<HTMLInputElement> ) => { 
         dispatch( 
             { 
                 type: types.UPDATE_POSITION,
@@ -57,7 +57,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         );
     }
 
-    const handleNameChange = ( event:any ) => { 
+    const handleNameChange = ( event:ChangeEvent<HTMLInputElement> ) => { 
         dispatch( 
             { 
                 type: types.UPDATE_NAME,
