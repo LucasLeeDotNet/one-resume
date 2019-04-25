@@ -4,7 +4,7 @@
 
 - The same skill sets can be attach to the experiences, so the reader have a clear sense on projects they've worked on and what skill sets were applied.
 
-- This project was write purely using react hooks.
+- This project was write purely using react hooks, creating a redux like store.
 
 - The persistent layer for this project is the repo itself, the app will hold its state in memory while editing, but in order to persist data, the manifest needs to be exported to the clipboard using 'export data' button. Paste this code to he src/manifest.ts and commit the change.
 
