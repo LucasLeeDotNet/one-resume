@@ -211,18 +211,20 @@ const SkillComponent = ( props: SkillProps )=> {
                 *   Action Buttons
                 *   --------------
                 */}
-                <Fab size="small" className="check-button action-buttons" aria-label="Edit" onClick={ _handleUpdateSkill } >
-                    <CheckIcon/>
-                </Fab>
-                <Fab size="small" aria-label="Edit action-buttons" onClick={handleResetSkill} >
-                    <ClearIcon/>
-                </Fab>
-                { 
-                  newFlag ? undefined:
-                  <Fab size="small" className="delete-button action-buttons" color="secondary" aria-label="Delete" onClick={() => handleDeleteSkill && handleDeleteSkill(id) } >
-                    <DeleteForeverIcon/>
-                  </Fab>                  
-                }
+                  <div className="action-button-container">
+                  <Fab size="small" className="check-button action-buttons" aria-label="Edit" onClick={ _handleUpdateSkill } >
+                      <CheckIcon/>
+                  </Fab>
+                  <Fab size="small" aria-label="Edit action-buttons" onClick={handleResetSkill} >
+                      <ClearIcon/>
+                  </Fab>
+                  { 
+                    newFlag ? undefined:
+                    <Fab size="small" className="delete-button action-buttons" color="secondary" aria-label="Delete" onClick={() => handleDeleteSkill && handleDeleteSkill(id) } >
+                      <DeleteForeverIcon/>
+                    </Fab>                  
+                  }
+                </div>
             </span>:undefined }
 
         </div>:<div></div>

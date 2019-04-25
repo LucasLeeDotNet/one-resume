@@ -325,7 +325,7 @@ const ExperienceComponent = ( props: ExperienceComponentProps )=> {
          * Non Edit Mode
          * -------------
          */
-        <div className={ 'exp' + (editMode ? ' edit-outline':'')} onClick={()=>handleSelectExperience(id)}>
+        <div className={ 'exp' + (editMode ? ' edit-outline clickable':'')} onClick={()=>handleSelectExperience(id)}>
             <div className="line1">
                 <div className="company">{company}</div> 
                 <div className="date">{date.toUpperCase()}</div>

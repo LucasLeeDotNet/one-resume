@@ -62,7 +62,6 @@ div.select-input{
 .check-button{ 
     background-color: #690 !important;
     color: white !important;
-    margin-right: 0.5rem !important;
 }
 
 .delete-button{ 
@@ -79,6 +78,7 @@ div.select-input{
   cursor: pointer;
 }
 
-.action-buttons{ 
-  
+.action-button-container{ 
+  display: flex;
+  flex-direction: row;
 }
