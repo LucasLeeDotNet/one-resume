@@ -14,7 +14,7 @@ TODO:
 - Add testing
 - Fix the generate pdf functionality
 
-Use the usual start script and build script to generate the artifact
+Use the usual start script and build script to get started
 
 ### `npm start`
 
