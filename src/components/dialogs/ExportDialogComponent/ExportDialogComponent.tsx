@@ -29,7 +29,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   /**
    * Replace the content of this file (/src/manifest.ts) with the manifest data copied by the export button
    */
-  import ManifestModel from './src/models/ManifestModel';
+  import ManifestModel from './models/ManifestModel';
   
   export const manifest:ManifestModel = `
   const handleCopyEvent = () => { 

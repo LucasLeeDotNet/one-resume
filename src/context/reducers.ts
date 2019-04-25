@@ -95,7 +95,7 @@ const reducer = (state:StateModel = initialState, action:any ):StateModel => {
         return { 
             ...state,
             experiences: action.experiences,
-            selectedExperience: ''
+            selectedExperience: action.selectedExperience || ''
         }
 
         /**

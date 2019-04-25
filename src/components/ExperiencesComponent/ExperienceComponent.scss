@@ -105,3 +105,42 @@
 .action-button-container button{ 
   margin-left: 0.5rem !important;
 }
+
+.bulletpoint-row{ 
+  display:flex;
+}
+
+.select-input{ 
+  width: 10rem;
+}
+
+.skills-row{ 
+  display: flex;
+}
+
+.small-skill-icon{ 
+  font-size: 1rem;
+}
+
+.remove-skill-button{ 
+  margin: -.5rem 0 0 -2.7rem !important;
+  color: red !important;
+}
+
+.add-skill-button{ 
+  color: #3f51b5 !important;
+}
+
+.skills-container, .nonedit-skill-list{ 
+  display: flex;
+  flex-direction: row;
+}
+
+.nonedit-skill-list{ 
+    margin-left: 2.3rem;
+    margin-bottom: 2rem;
+}
+
+.nonedit-skill-item{ 
+  margin-right: 0.5rem;
+}

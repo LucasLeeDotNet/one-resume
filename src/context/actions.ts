@@ -121,7 +121,7 @@ export const useActions = (state:StateModel, dispatch: Function) => {
   /**
    * Search and updates an existing experience or creates a new experience if the id is 'new'
    */
-  function updateExperience( experience: ExperienceModel ){ 
+  function updateExperience( experience: ExperienceModel, selectedExperience?: string ){ 
     let newExperiences;
     //Special handler for new experience
     if ( experience.id === 'new'){ 
@@ -139,11 +139,12 @@ export const useActions = (state:StateModel, dispatch: Function) => {
           ...result,
           updateExperience
         ] 
-      }, [] );      
+      }, [] );
     }
     dispatch( { 
-        type: types.UPDATE_EXPERIENCE, 
-        experiences: newExperiences 
+      type: types.UPDATE_EXPERIENCE, 
+      experiences: newExperiences, 
+      selectedExperience: selectedExperience || undefined,
     } )
   }
 
