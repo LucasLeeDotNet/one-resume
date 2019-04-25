@@ -3,13 +3,47 @@ import { types } from "./reducers";
 
 //Model
 import SkillModel from "../models/SkillModel";
-import { StateModel } from "./initialState";
+import { StateModel } from "../models/StateModel";
 
 //Utility
 import uuid from 'uuid/v4';
+import ExperienceModel from "../models/ExperienceModel";
 declare const html2pdf: Function;
 
 export const useActions = (state:StateModel, dispatch: Function) => {
+
+  /**
+   * Search and deletes a experience with the associated id
+   */
+  function deleteExperience( id: string ){ 
+
+    const newExperiences = state.experiences.filter( ( experience: ExperienceModel ) => { 
+      return experience.id !== id;
+    } );
+    
+    dispatch( { 
+        type: types.UPDATE_EXPERIENCE, 
+        experiences: newExperiences 
+    } )
+  }
+
+
+  /**
+   * Search and deletes a skill with the associated id
+   */
+  function deleteSkill( id: string ){ 
+
+    const newSkills = state.skills.filter( ( experience: SkillModel ) => { 
+      return experience.id !== id;
+    } );
+    
+    dispatch( { 
+        type: types.UPDATE_SKILL, 
+        skills: newSkills 
+    } )
+  }
+
+
 
   /**
    * Hides toolbar for print, clicking on the toolback again should return the page to its initial state
@@ -21,16 +55,16 @@ export const useActions = (state:StateModel, dispatch: Function) => {
         printMode: false
       } )
       //Adjust the margin for print
-      const $content:any = document.querySelector( ".content" );
-      $content.style.margin = 'initial';
+      const $content:HTMLElement|null = document.querySelector( ".content" );
+      $content && ( $content.style.margin = 'initial' );
     } else { 
       dispatch( { 
         type: types.TOGGLE_PRINT,
         printMode: true
       } )
       //Adjust the margin for print
-      const $content:any = document.querySelector( ".content" );
-      $content.style.margin = '-4rem';
+      const $content:HTMLElement|null = document.querySelector( ".content" );
+      $content && ( $content.style.margin = '-4rem' );
       snackbar( 'Click anywhere on the screen to turn off print mode' );
     }
 
@@ -48,8 +82,8 @@ export const useActions = (state:StateModel, dispatch: Function) => {
     } );
 
     //Move the margin up to remove the empty space for the pdf
-    const $content:any = document.querySelector( ".content" );
-    $content.style.margin = '-50px 0 0';
+    const $content:HTMLElement|null = document.querySelector( ".content" );
+    $content && ($content.style.margin = '-50px 0 0' );
 
     html2pdf( document.querySelector( '.content'), {
       margin: 0.4,
@@ -67,8 +101,8 @@ export const useActions = (state:StateModel, dispatch: Function) => {
           } );
 
           //Return the top margin after pdf generation
-          const $content:any = document.querySelector( ".content" );
-          $content.style.margin = 'initial';
+          const $content:HTMLElement|null = document.querySelector( ".content" );
+          $content && ( $content.style.margin = 'initial' );
         },
         dpi: 600,
         letterRendering: false,
@@ -82,6 +116,36 @@ export const useActions = (state:StateModel, dispatch: Function) => {
     });
   }
 
+
+
+  /**
+   * Search and updates an existing experience or creates a new experience if the id is 'new'
+   */
+  function updateExperience( experience: ExperienceModel ){ 
+    let newExperiences;
+    //Special handler for new experience
+    if ( experience.id === 'new'){ 
+      newExperiences = [
+        ...state.experiences,
+        { 
+          ...experience,
+          id: uuid()
+        }
+      ];
+    } else {
+      newExperiences = state.experiences.reduce( ( result: ExperienceModel[], _experience: ExperienceModel ) => {
+        const updateExperience: ExperienceModel =  (_experience.id === experience.id )? experience : _experience;
+        return [
+          ...result,
+          updateExperience
+        ] 
+      }, [] );      
+    }
+    dispatch( { 
+        type: types.UPDATE_EXPERIENCE, 
+        experiences: newExperiences 
+    } )
+  }
 
 
   /**
@@ -127,9 +191,12 @@ export const useActions = (state:StateModel, dispatch: Function) => {
   }
 
   return {
+    deleteExperience,
+    deleteSkill,
     handlePrintModeToggle,
     handlePrintPdf,
     snackbar,
-    updateSkill
+    updateExperience,
+    updateSkill,
   };
 };

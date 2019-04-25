@@ -38,7 +38,14 @@ const SkillsComponent = ( props: SkillsProps ) => {
         <div className={'skills-container'} >
             <SkillComponent {...newSkill} newFlag={true} editMode={editMode} selectedSkill={selectedSkill} key="new" onSelectSkill={ handleSelectSkill}  handleUpdateSkill={ handleUpdateSkill }/>
             { skills.map ( ( skill: SkillModel ) => 
-                <SkillComponent {...skill} editMode={editMode} selectedSkill={selectedSkill} key={skill.id} onSelectSkill={ handleSelectSkill}  handleUpdateSkill={ handleUpdateSkill }/> ) 
+                <SkillComponent {...skill}
+                  editMode={editMode}
+                  handleDeleteSkill={(id:string)=>actions.deleteSkill(id)}
+                  handleUpdateSkill={handleUpdateSkill}
+                  key={skill.id}
+                  onSelectSkill={handleSelectSkill}
+                  selectedSkill={selectedSkill}
+                /> ) 
             }
         </div>
     );  

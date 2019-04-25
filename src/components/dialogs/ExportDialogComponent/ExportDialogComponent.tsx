@@ -27,7 +27,7 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   
   const exportPrefix = `
   /**
-   * Replace the content of this file with the manifest data copied by the export button
+   * Replace the content of this file (/src/manifest.ts) with the manifest data copied by the export button
    */
   import ManifestModel from './src/models/ManifestModel';
   

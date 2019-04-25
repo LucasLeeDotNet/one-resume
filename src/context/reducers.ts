@@ -1,14 +1,16 @@
 //Model
-import {
-    initialState, StateModel
-} from './initialState';
+import { initialState } from './initialState';
+import { StateModel } from '../models/StateModel';
+
 
 const types = {
     HIDE_GENERIC_SNACKBAR: 'HIDE_GENERIC_SNACKBAR',
+    SELECT_EXPERIENCE: 'SELECT_EXPERIENCE',
     SELECT_SKILL: 'SELECT_SKILL',
     SHOW_GENERIC_SNACKBAR: 'SHOW_GENERIC_SNACKBAR',
     TOGGLE_EDIT: 'TOGGLE_EDIT',
     TOGGLE_PRINT: 'TOGGLE_PRINT',
+    UPDATE_EXPERIENCE: 'UPDATE_EXPERIENCE',
     UPDATE_NAME: 'UPDATE_NAME',
     UPDATE_POSITION: 'UPDATE_POSITION',
     UPDATE_SKILL: 'UPDATE_SKILL',
@@ -31,12 +33,23 @@ const reducer = (state:StateModel = initialState, action:any ):StateModel => {
           }
 
         /**
+         * Select a experience with mouse click in edit mode
+         */
+        case types.SELECT_EXPERIENCE:
+        return {
+            ...state,
+            selectedExperience: action.selectedExperience,
+            selectedSkill: ''
+        }
+
+        /**
          * Select a skill with mouse click
          */
         case types.SELECT_SKILL:
             return {
                 ...state,
-                selectedSkill: action.selectedSkill
+                selectedSkill: action.selectedSkill,
+                selectedExperience: ''
             }
 
         /**
@@ -72,10 +85,18 @@ const reducer = (state:StateModel = initialState, action:any ):StateModel => {
         case types.TOGGLE_PRINT:
         return {
             ...state,
-            printMode: action.printMode, 
-            editMode: false
+            printMode: action.printMode
         }
 
+                /**
+         * Update a particular experience
+         */
+        case types.UPDATE_EXPERIENCE:
+        return { 
+            ...state,
+            experiences: action.experiences,
+            selectedExperience: ''
+        }
 
         /**
          * Update the name Field
@@ -108,7 +129,7 @@ const reducer = (state:StateModel = initialState, action:any ):StateModel => {
             return { 
                 ...state,
                 skills: action.skills,
-                selectedSkill: ''                
+                selectedSkill: ''
             }
         
 

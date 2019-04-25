@@ -12,7 +12,8 @@ import GenericSnackbarComponent from './components/snackbars/GenericSnackbarComp
 import './App.scss';
 import { StoreContext } from './context/StoreContext';
 
-const App = ( props: any ) => {
+export interface AppProps {}
+const App = ( props: AppProps ) => {
 
   const { state, dispatch, actions } = useContext( StoreContext );
 
