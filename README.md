@@ -13,6 +13,7 @@ TODO:
 - Write a better readme
 - Add testing
 - Fix the generate pdf functionality
+- Fix the skill level number type issue (input is a string but the underlining type is a number, while typing a decimal it will read it as NaN)
 
 Use the usual start script and build script to get started
 
