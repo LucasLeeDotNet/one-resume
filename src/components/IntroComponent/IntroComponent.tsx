@@ -1,10 +1,19 @@
-import React, { useState, useContext, useEffect } from 'react';
-import './IntroComponent.scss';
+//React
+import React, { useState, useContext, useEffect, ChangeEvent } from 'react';
+
+//Context
+import { StoreContext } from '../../context/StoreContext';
+import { types } from '../../context/reducers';
+
+//Material UI
 import { Fab, TextField } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
-import { types } from '../../context/reducers';
-import { StoreContext } from '../../context/StoreContext';
+
+//Model
 import IntroModel from '../../models/IntroModel';
+
+//Style
+import './IntroComponent.scss';
 
 export interface IntroComponentProps {}
 
@@ -13,7 +22,9 @@ const IntroComponent = ( props: IntroComponentProps )=> {
     const { position, name, statement }: IntroModel = state.intro;
     const editMode: boolean = state.editMode;
     
-    //Being Stubborn and wanted to included some local state rather than just having the toggles in the global state.
+    /**
+     * If editMode is off, ensure local edit state are turned off
+     */
     useEffect( ()=>{ 
         if ( !editMode ){ 
             toggleStatementEditMode( false );
@@ -22,13 +33,13 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         }
     });
     
-    //localstate
+    //:ocal state
     const [ statementEditMode, toggleStatementEditMode ] = useState( false );
     const [ positionEditMode, togglePositionEditMode ] = useState( false );
     const [ nameEditMode, toggleNameEditMode ] = useState( false );
     
     //Simple update handlers
-    const handleStatementChange = ( event:any ) => { 
+    const handleStatementChange = ( event:ChangeEvent<HTMLInputElement> ) => { 
         dispatch( 
             { 
                 type: types.UPDATE_STATEMENT,
@@ -37,7 +48,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         );
     };
 
-    const handlePositionChange = ( event:any ) => { 
+    const handlePositionChange = ( event:ChangeEvent<HTMLInputElement> ) => { 
         dispatch( 
             { 
                 type: types.UPDATE_POSITION,
@@ -46,7 +57,7 @@ const IntroComponent = ( props: IntroComponentProps )=> {
         );
     }
 
-    const handleNameChange = ( event:any ) => { 
+    const handleNameChange = ( event:ChangeEvent<HTMLInputElement> ) => { 
         dispatch( 
             { 
                 type: types.UPDATE_NAME,

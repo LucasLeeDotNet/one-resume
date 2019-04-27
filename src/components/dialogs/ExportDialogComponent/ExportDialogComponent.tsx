@@ -1,14 +1,20 @@
+//React
 import React, { SyntheticEvent, useContext, useEffect } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
-import { ManifestModel } from '../../../context/initialState';
+
+//Context
 import { StoreContext } from '../../../context/StoreContext';
+
+//Material UI
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
+
+//Styles
 import './ExportDialogComponent.scss';
+
 declare var navigator: NavigatorModel;
 
 export interface ExportDialogComponentModel{ 
   openState: boolean,
   onClose: ( event:SyntheticEvent )=>void,
-  manifest?: ManifestModel
 }
 
 interface NavigatorModel{ 
@@ -19,25 +25,32 @@ export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => {
   const { state, dispatch, actions } = useContext(StoreContext);
   const { openState, onClose } = props;
   
+  const exportPrefix = `
+  /**
+   * Replace the content of this file (/src/manifest.ts) with the manifest data copied by the export button
+   */
+  import ManifestModel from './models/ManifestModel';
+  
+  export const manifest:ManifestModel = `
   const handleCopyEvent = () => { 
-    navigator.clipboard.writeText(JSON.stringify({intro: state.intro, skills: state.skills, experinces: state.experinces}, null, 4)).then(function() {
-      /* clipboard successfully set */
+    navigator.clipboard.writeText(exportPrefix + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)).then(function() {
+      actions.snackbar( 'Manifest copied to clipboard' );
     }, function() {
-      /* clipboard write failed */
+      actions.snackbar( 'Manifest copy to clipboard failed, try manually copy and paste the manifest' );
     });
-    // document.dispatchEvent(pasteEvent);
   }
   return ( 
     <Dialog
+      className="export-dialog"
       open={openState}
       onClose={onClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Export Manifest Datra</DialogTitle>
+      <DialogTitle id="alert-dialog-title">Export Manifest Data</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          <pre className="export-data">{JSON.stringify({intro: state.intro, skills: state.skills, experinces: state.experinces}, null, 4)}</pre>
+          <pre className="export-data">{exportPrefix + JSON.stringify({intro: state.intro, skills: state.skills, experiences: state.experiences}, null, 4)}</pre>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

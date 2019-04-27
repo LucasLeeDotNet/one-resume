@@ -1,15 +1,34 @@
-import React, { useState, useEffect, SyntheticEvent } from 'react';
-import SkillModel from '../../models/SkillModel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//React
+import React, { useState, ChangeEvent } from 'react';
+
+//Material UI
+import { 
+  Fab,
+  FormControl,
+  InputLabel,
+  LinearProgress,
+  MenuItem,
+  Select,
+  TextField,
+} from '@material-ui/core'
 import * as brandIcons from "@fortawesome/free-brands-svg-icons";
-import './SkillComponent.scss';
-import { LinearProgress, TextField, FormControl, InputLabel, Select, MenuItem, Fab } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
-import AddIcon from '@material-ui/icons/Add';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+
+//FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+//Model
+import SkillModel from '../../models/SkillModel';
+
+//Style
+import './SkillComponent.scss';
 
 export interface SkillProps extends SkillModel{
     editMode: boolean,
+    handleDeleteSkill?: Function,
     handleUpdateSkill: Function, 
     newFlag?: boolean,
     onSelectSkill: Function,
@@ -17,7 +36,20 @@ export interface SkillProps extends SkillModel{
 }
 
 const SkillComponent = ( props: SkillProps )=> { 
-    const { icon, name, level, interest, lastUsed, id, handleUpdateSkill, selectedSkill, onSelectSkill, editMode, newFlag } = props;
+    const { icon,
+      editMode,
+      handleDeleteSkill,
+      handleUpdateSkill,
+      id,
+      interest,
+      lastUsed,
+      level,
+      name,
+      newFlag,
+      onSelectSkill,
+      selectedSkill,
+    } = props;
+    
     const [ nameEdit, handleEditName ] = useState( name );
     const [ levelEdit, handleEditLevel ] = useState( level );
     const [ interestEdit, handleEditInterest ] = useState( interest );
@@ -33,7 +65,7 @@ const SkillComponent = ( props: SkillProps )=> {
     /**
      * Reset the skill by loading in the local state with the props
      */
-    const handleResetSkill = ( event?: SyntheticEvent ):void => {
+    const handleResetSkill = ( event?: React.MouseEvent<HTMLElement> ):void => {
         event && event.stopPropagation();
 
         onSelectSkill( '' );
@@ -47,9 +79,9 @@ const SkillComponent = ( props: SkillProps )=> {
 
 
     /**
-     * Update Skill handler pass the edited data to the handler
+     * Update Skill handler gathering edited data for the handleUpdateSkill callback
      */
-    const _handleUpdateSkill = ( event: SyntheticEvent ):void => { 
+    const _handleUpdateSkill = ( event: React.MouseEvent<HTMLElement> ):void => { 
         event.stopPropagation();
         editMode && handleUpdateSkill( { 
             id,
@@ -64,7 +96,7 @@ const SkillComponent = ( props: SkillProps )=> {
 
     return ( 
         ( !newFlag || newFlag && editMode ) ? 
-        <div className="skill-container" onClick={ ()=> editMode && onSelectSkill( selectedSkill !== id ? id : selectedSkill ) }>
+        <div className={'skill-container' + (editMode ? ' clickable' : '')} onClick={ ()=> editMode && onSelectSkill( selectedSkill !== id ? id : selectedSkill ) }>
             { newFlag ?
                 <div className="add-button__container">
                     <AddIcon className="add-button"/>
@@ -73,10 +105,10 @@ const SkillComponent = ( props: SkillProps )=> {
                 *   Static Preview of the skill
                 *   ---------------------------
                 */
-                [ <div className="icon-container">
-                    <FontAwesomeIcon className="skill-icon" icon={ brandIconSet[ faIcon ]}/>
+                [ <div className="icon-container" key="iconContainer">
+                    { icon !== '' ? <FontAwesomeIcon className="skill-icon" icon={ brandIconSet[ faIcon ]}/> : ''}
                 </div>,
-                <div>
+                <div key="skillContainer">
                     <div className="skill-name">{name}</div>
                     <div className="skill-progress-container">
                         <div className="skill-row"> <span className="skill-label">Skill </span> <div className="spacer"/>{level}/10 </div>
@@ -99,7 +131,7 @@ const SkillComponent = ( props: SkillProps )=> {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    onChange={ (event:any)=>handleEditIcon(event.target.value) }
+                    onChange={ (event:ChangeEvent<HTMLInputElement>)=>handleEditIcon(event.target.value) }
                     value={iconEdit}
                 />
                 {/**
@@ -112,7 +144,7 @@ const SkillComponent = ( props: SkillProps )=> {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    onChange={ (event:any)=>handleEditName(event.target.value) }
+                    onChange={ (event:ChangeEvent<HTMLInputElement>)=>handleEditName(event.target.value) }
                     value={nameEdit}
                 />
                 {/**
@@ -125,7 +157,7 @@ const SkillComponent = ( props: SkillProps )=> {
                     InputLabelProps={{
                         shrink: true,
                     }}
-                    onChange={ (event:any)=>handleEditLevel(event.target.value) }
+                    onChange={ (event:ChangeEvent<HTMLInputElement>)=>handleEditLevel(Number(event.target.value)) }
                     value={levelEdit}
                 />
                 {/**
@@ -136,7 +168,7 @@ const SkillComponent = ( props: SkillProps )=> {
                 <InputLabel htmlFor="interest">Interest</InputLabel>
                 <Select
                     value={ interestEdit }
-                    onChange={(event:any)=>handleEditInterest( event.target.value)}
+                    onChange={(event:ChangeEvent<HTMLSelectElement>)=>handleEditInterest( event.target.value)}
                     inputProps={{
                     name: 'interest',
                     id: 'interest',
@@ -159,7 +191,7 @@ const SkillComponent = ( props: SkillProps )=> {
                 <InputLabel htmlFor="lastUsed">Last Used</InputLabel>
                 <Select
                     value={ lastUsedEdit }
-                    onChange={(event:any)=>handleEditLastUsed( event.target.value)}
+                    onChange={(event:ChangeEvent<HTMLSelectElement>)=>handleEditLastUsed( event.target.value)}
                     inputProps={{
                     name: 'lastUsed',
                     id: 'lastUsed',
@@ -179,12 +211,20 @@ const SkillComponent = ( props: SkillProps )=> {
                 *   Action Buttons
                 *   --------------
                 */}
-                <Fab className="check-button" aria-label="Edit" onClick={ _handleUpdateSkill } >
-                    <CheckIcon/>
-                </Fab>
-                <Fab aria-label="Edit" onClick={handleResetSkill} >
-                    <ClearIcon/>
-                </Fab>
+                  <div className="action-button-container">
+                  <Fab size="small" className="check-button action-buttons" aria-label="Edit" onClick={ _handleUpdateSkill } >
+                      <CheckIcon/>
+                  </Fab>
+                  <Fab size="small" aria-label="Edit action-buttons" onClick={handleResetSkill} >
+                      <ClearIcon/>
+                  </Fab>
+                  { 
+                    newFlag ? undefined:
+                    <Fab size="small" className="delete-button action-buttons" color="secondary" aria-label="Delete" onClick={() => handleDeleteSkill && handleDeleteSkill(id) } >
+                      <DeleteForeverIcon/>
+                    </Fab>                  
+                  }
+                </div>
             </span>:undefined }
 
         </div>:<div></div>
