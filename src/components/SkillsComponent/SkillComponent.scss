@@ -82,3 +82,24 @@ div.select-input{
   display: flex;
   flex-direction: row;
 }
+
+.skill-level-container{ 
+  width: 7rem;
+  display:flex;
+  flex-direction: column;
+  height: 2.9rem;
+}
+
+.skill-level-container .skill-level-label{ 
+  color: rgba(0, 0, 0, 0.54);
+  padding: 0;
+  font-size: 0.8rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.skill-level-value{ 
+  font-size: 16px;
+  margin-bottom: 0.4rem;
+}

@@ -57,7 +57,7 @@ const HeaderComponent = () => {
             <AppBar position="static" color="default">
                 <Toolbar className="toolbar">
                     <Typography variant="h6" color="inherit">
-                        Resume
+                        
                     </Typography>
                     <div className="spacer" />
 
