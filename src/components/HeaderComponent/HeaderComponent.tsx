@@ -61,17 +61,17 @@ const HeaderComponent = () => {
                     </Typography>
                     <div className="spacer" />
 
-                    <Button variant="contained" onClick={ handlePrintModeClick }>
+                    {/* <Button variant="contained" onClick={ handlePrintModeClick }>
                         <PrintIcon/> Hide Toolbar for Print
-                    </Button>
+                    </Button> */}
 
                     { 
                         /*  Generate PDF Button
                             ------------------*/
                     }
-                    <Button className="right-menu-button"variant="contained" onClick={ actions.handlePrintPdf }>
+                    {/* <Button className="right-menu-button"variant="contained" onClick={ actions.handlePrintPdf }>
                         <DescriptionIcon/> Generate PDF (Has Issues)
-                    </Button>
+                    </Button> */}
 
 
                     { 
