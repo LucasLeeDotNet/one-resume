@@ -18,7 +18,7 @@ export interface ExportDialogComponentModel{
 }
 
 interface NavigatorModel{ 
-    clipboard: any;
+  clipboard: any;
 }
 
 export const ExportDialogComponent = ( props: ExportDialogComponentModel ) => { 

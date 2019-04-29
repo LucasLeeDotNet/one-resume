@@ -16,6 +16,7 @@ import AddIcon from '@material-ui/icons/Add';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Slider from '@material-ui/lab/Slider';
 
 //FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -151,15 +152,18 @@ const SkillComponent = ( props: SkillProps )=> {
                 *   Skill Level Input
                 *   -----------------
                 */}
-                <TextField
-                    label="Edit Skill Level"
-                    className="text-input text-input--small"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    onChange={ (event:ChangeEvent<HTMLInputElement>)=>handleEditLevel(Number(event.target.value)) }
+                <div className="skill-level-container">
+                  <InputLabel className="skill-level-label" htmlFor="skill-level">Skill Level</InputLabel>
+                  <div className="skill-level-value">{levelEdit}</div>
+                  <Slider
+                    id="skill-level"
                     value={levelEdit}
-                />
+                    onChange={(event:ChangeEvent<{}>, value: number )=>handleEditLevel( Number(value))}
+                    max={10}
+                    min={0.5}
+                    step={0.5}
+                  />
+                </div>
                 {/**
                 *   Interest Select
                 *   ---------------
