@@ -8,7 +8,7 @@ import { StoreContext } from '../../../context/StoreContext';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@material-ui/core';
 
 //Styles
-import './ExportDialogComponent.scss';
+import './ExportDialog.component.scss';
 
 declare var navigator: NavigatorModel;
 

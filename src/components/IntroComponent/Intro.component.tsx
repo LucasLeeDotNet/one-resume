@@ -13,7 +13,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import IntroModel from '../../models/IntroModel';
 
 //Style
-import './IntroComponent.scss';
+import './Intro.component.scss';
 
 export interface IntroComponentProps {}
 

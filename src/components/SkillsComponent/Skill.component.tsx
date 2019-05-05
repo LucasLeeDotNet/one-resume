@@ -32,18 +32,18 @@ import "./Skill.style.scss";
 
 export interface ISkillProps extends SkillModel {
     editMode: boolean;
-    handleDeleteSkill?: Function;
-    handleUpdateSkill: Function;
+    onDeleteSkill?: (id: string) => void;
+    onUpdateSkill: ( skill: SkillModel ) => void;
     newFlag?: boolean;
-    onSelectSkill: Function;
+    onSelectSkill: ( id: string ) => void;
     selectedSkill: string;
 }
 
 const SkillComponent = ( props: ISkillProps ) => {
     const { icon,
       editMode,
-      handleDeleteSkill,
-      handleUpdateSkill,
+      onDeleteSkill,
+      onUpdateSkill,
       id,
       interest,
       lastUsed,
@@ -65,7 +65,12 @@ const SkillComponent = ( props: ISkillProps ) => {
     const faIcon = "fa" + icon;
 
 
-    const generateIconOptions = ( ) => {
+    /**
+     * Generate the list of options for the skill icon select
+     *
+     * @returns {JSX.Element[]}
+     */
+    const generateIconOptions = ( ): JSX.Element[] => {
       const generateItem = ( skillIcon: string ) => {
         const iconName = skillIcon.replace( /^fa/, "" );
         return (
@@ -79,9 +84,16 @@ const SkillComponent = ( props: ISkillProps ) => {
         );
       };
 
-      return Object.keys(brandIconSet).filter( (key) => key !== "fab" && key !== "prefix" ).map( generateItem );
+      const removeFabAndPrefix = (key: string) => key !== "fab" && key !== "prefix";
+      return Object.keys(brandIconSet).filter( removeFabAndPrefix ).map( generateItem );
     };
 
+
+    /**
+     * Return Skillmodel from the editable inputs
+     *
+     * @returns {SkillModel}
+     */
     const getAllEdits = (): SkillModel => {
       return {
           icon: iconEdit,
@@ -95,203 +107,296 @@ const SkillComponent = ( props: ISkillProps ) => {
 
 
     /**
-     * Reset the skill by loading in the local state with the props
+     * Enters edit mode after selecting a skill
+     *
+     * @returns {void}
      */
-    const handleResetSkill = ( event?: React.MouseEvent<HTMLElement> ): void => {
-        if ( event ) { event.stopPropagation(); }
+    const handleSelectSkill = (): void => {
+      if ( editMode && typeof id === "string" ) { onSelectSkill( selectedSkill !== id ? id : selectedSkill ); }
+    };
 
-        onSelectSkill( "" );
-        handleEditName( name );
-        handleEditLevel( level );
-        handleEditInterest( interest );
-        handleEditLastUsed( lastUsed );
-        handleEditIcon( icon );
+
+    const handleDeleteSkill = () => {
+      if ( onDeleteSkill && typeof id === "string" ) { onDeleteSkill(id); }
+    };
+
+
+    const handleInterestLevelChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+      handleEditInterest( event.target.value);
+    };
+
+
+    const handleLastUsedSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+      handleEditLastUsed( event.target.value);
     };
 
 
     /**
-     * Update Skill handler gathering edited data for the handleUpdateSkill callback
+     * Update Skill handler gathering edited data for the handleUpdateSkill callbac
+     *
+     * @param {React.MouseEvent<HTMLElement>} event Mouse click event
+     * @returns {void}
      */
     const handleUpdateSkillClicked = ( event: React.MouseEvent<HTMLElement> ): void => {
         event.stopPropagation();
-        if ( editMode ) { handleUpdateSkill( getAllEdits() ); }
+        if ( editMode ) { onUpdateSkill( getAllEdits() ); }
         if ( newFlag ) { handleResetSkill(); }
+    }  ;
+
+
+    /**
+     * Reset the skill by reverting to the original props
+     *
+     * @param {React.MouseEvent<HTMLElement>} event Mouse click event
+     * @returns {void}
+     */
+    const handleResetSkill = ( event?: React.MouseEvent<HTMLElement> ): void => {
+      if ( event ) { event.stopPropagation(); }
+
+      onSelectSkill( "" );
+      handleEditName( name );
+      handleEditLevel( level );
+      handleEditInterest( interest );
+      handleEditLastUsed( lastUsed );
+      handleEditIcon( icon );
     };
 
-    return (
-        ( !newFlag || newFlag && editMode ) ?
+
+    const handleSkillIconSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+      handleEditIcon(event.target.value);
+    };
+
+    const handleSkillLevelSliderChange = (event: ChangeEvent<{}>, value: number ): void => {
+      handleEditLevel( Number(value) );
+    };
+
+    const handleSkillNameTextInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+      handleEditName(event.target.value);
+    };
+
+
+    /**
+     * Renders the interest level selector
+     *
+     * @returns {JSX.Element}
+     */
+    const renderInterestLevelSelect = (): JSX.Element => (
+      <FormControl className="select-input">
+      <InputLabel htmlFor="interest">Interest</InputLabel>
+      <Select
+        value={interestEdit}
+        onChange={handleInterestLevelChange}
+        inputProps={{
+          id: "interest",
+        name: "interest",
+        }}
+      >
+        <MenuItem value="">
+        <em>None</em>
+        </MenuItem>
+        <MenuItem value="Low">Low</MenuItem>
+        <MenuItem value="Moderate">Moderate</MenuItem>
+        <MenuItem value="High">High</MenuItem>
+        <MenuItem value="Highest">Highest</MenuItem>
+      </Select>
+      </FormControl>
+    );
+
+
+    /**
+     * Renders the last used selector
+     *
+     * @returns {JSX.Element}
+     */
+    const renderLastUsedSelect = (): JSX.Element => (
+      <FormControl className="select-input">
+      <InputLabel htmlFor="lastUsed">Last Used</InputLabel>
+      <Select
+        value={lastUsedEdit}
+        onChange={handleLastUsedSelectChange}
+        inputProps={{
+          id: "lastUsed",
+        name: "lastUsed",
+        }}
+      >
+        <MenuItem value="">
+        <em>None</em>
+        </MenuItem>
+        <MenuItem value="Current">Current</MenuItem>
+        <MenuItem value="This Month">This Month</MenuItem>
+        <MenuItem value="Last Month">Last Month</MenuItem>
+        <MenuItem value="This Year">This Year</MenuItem>
+        <MenuItem value="Before This Year">Before This Year</MenuItem>
+      </Select>
+      </FormControl>
+    );
+
+
+    /**
+     * Renders the skill icon selector
+     *
+     * @returns {JSX.Element}
+     */
+    const renderSkillIconSelect = (): JSX.Element => (
+      <FormControl className="select-input" >
+        <InputLabel htmlFor="skill-icon">Select Skills</InputLabel>
+        <Select
+          id="skill-icon"
+          value={iconEdit}
+          onChange={handleSkillIconSelectChange}
+        >
+          {generateIconOptions()}
+        </Select>
+      </FormControl>
+    );
+
+
+    /**
+     * Renders the skill level text input
+     *
+     * @returns {JSX.Element}
+     */
+    const renderSkillLevelSlider = (): JSX.Element => (
+      <div className="skill-level-container">
+      <InputLabel className="skill-level-label" htmlFor="skill-level">Skill Level</InputLabel>
+      <div className="skill-level-value">{levelEdit}</div>
+      <Slider
+        id="skill-level"
+        value={levelEdit}
+        onChange={handleSkillLevelSliderChange}
+        max={10}
+        min={0.5}
+        step={0.5}
+      />
+      </div>
+    );
+
+
+    /**
+     * Renders the skill name text input
+     *
+     * @returns {JSX.Element}
+     */
+    const renderSkillNameTextInput = (): JSX.Element => (
+      <TextField
+        label="Edit Skill Name"
+        className="text-input"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        onChange={handleSkillNameTextInputChange}
+        value={nameEdit}
+      />
+    );
+
+
+    /**
+     * Renders the static skill preview
+     *
+     * @returns {JSX.Element[]}
+     */
+    const renderStaticSkillPreivew = (): JSX.Element[] => {
+      return [
         (
-            <div className={"skill-container" + (editMode ? " clickable" : "")} onClick={() => editMode && onSelectSkill( selectedSkill !== id ? id : selectedSkill )}>
-                { newFlag ?
-                    <div className="add-button__container">
-                        <AddIcon className="add-button"/>
-                    </div> :
-
-
-                    /**
-                     * Static Preview of the skill
-                     * ---------------------------
-                     */
-                    [ <div className="icon-container" key="iconContainer">
-                        {icon !== "" && typeof brandIconSet[ faIcon ] !== "undefined" ?
-                          <FontAwesomeIcon className="skill-icon" icon={brandIconSet[ faIcon ]}/>
-                          :
-                          ""
-                        }
-                    </div>,
-                    <div key="skillContainer">
-                        <div className="skill-name">{name}</div>
-                        <div className="skill-progress-container">
-                            <div className="skill-row">
-                              <span className="skill-label">Skill </span>
-                              <div className="spacer"/>
-                              {level}/10
-                            </div>
-                            <LinearProgress variant="determinate" value={level / 10 * 100} />
-                            <div className="skill-row">
-                              <span className="skill-label">Interest </span>
-                              <div className="spacer"/>
-                              {interest}
-                            </div>
-                            <div className="skill-row">
-                              <span className="skill-label">Last used </span>
-                              <div className="spacer"/>
-                              {lastUsed}
-                            </div>
-
-                        </div>
-                    </div>]
-                }
-
-
-                { selectedSkill === id ?
-                <span className="input-container">
-
-
-                  { 
-                    /**
-                     * Icon Select for the skill
-                     * -------------------------
-                     */
-                  }
-                  <FormControl className="select-input" >
-                    <InputLabel htmlFor="skill-icon">Select Skills</InputLabel>
-                    <Select
-                      id="skill-icon"
-                      value={iconEdit}
-                      onChange={(event: ChangeEvent<HTMLSelectElement>) => handleEditIcon(event.target.value)}
-                    >
-                      {generateIconOptions()}
-                    </Select>
-                  </FormControl>
-
-
-                    {/**
-                    *   Skill Name Input
-                    *   ----------------
-                    */}
-                    <TextField
-                        label="Edit Skill Name"
-                        className="text-input"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        onChange={(event: ChangeEvent<HTMLInputElement>) => handleEditName(event.target.value)}
-                        value={nameEdit}
-                    />
-
-
-                    {/**
-                    *   Skill Level Input
-                    *   -----------------
-                    */}
-                    <div className="skill-level-container">
-                    <InputLabel className="skill-level-label" htmlFor="skill-level">Skill Level</InputLabel>
-                    <div className="skill-level-value">{levelEdit}</div>
-                    <Slider
-                        id="skill-level"
-                        value={levelEdit}
-                        onChange={(event: ChangeEvent<{}>, value: number ) => handleEditLevel( Number(value))}
-                        max={10}
-                        min={0.5}
-                        step={0.5}
-                    />
-                    </div>
-
-
-                    {/**
-                    *   Interest Select
-                    *   ---------------
-                    */}
-                    <FormControl className="select-input">
-                    <InputLabel htmlFor="interest">Interest</InputLabel>
-                    <Select
-                        value={interestEdit}
-                        onChange={(event: ChangeEvent<HTMLSelectElement>) => handleEditInterest( event.target.value)}
-                        inputProps={{
-                        name: "interest",
-                        id: "interest",
-                        }}
-                        >
-                        <MenuItem value="">
-                        <em>None</em>
-                        </MenuItem>
-                        <MenuItem value="Low">Low</MenuItem>
-                        <MenuItem value="Moderate">Moderate</MenuItem>
-                        <MenuItem value="High">High</MenuItem>
-                        <MenuItem value="Highest">Highest</MenuItem>
-                    </Select>
-                    </FormControl>
-                    {/**
-                    *   Last Used Select
-                    *   ----------------
-                    */}
-                    <FormControl className="select-input">
-                    <InputLabel htmlFor="lastUsed">Last Used</InputLabel>
-                    <Select
-                        value={lastUsedEdit}
-                        onChange={(event: ChangeEvent<HTMLSelectElement>) => handleEditLastUsed( event.target.value)}
-                        inputProps={{
-                        name: "lastUsed",
-                        id: "lastUsed",
-                        }}
-                        >
-                        <MenuItem value="">
-                        <em>None</em>
-                        </MenuItem>
-                        <MenuItem value="Current">Current</MenuItem>
-                        <MenuItem value="This Month">This Month</MenuItem>
-                        <MenuItem value="Last Month">Last Month</MenuItem>
-                        <MenuItem value="This Year">This Year</MenuItem>
-                        <MenuItem value="Before This Year">Before This Year</MenuItem>
-                    </Select>
-                    </FormControl>
-                    {/**
-                    *   Action Buttons
-                    *   --------------
-                    */}
-                    <div className="action-button-container">
-                    <Fab
-                        aria-label="Edit"
-                        className="check-button action-buttons"
-                        onClick={handleUpdateSkillClicked}
-                        size="small"
-                    >
-                        <CheckIcon/>
-                    </Fab>
-                    <Fab size="small" aria-label="Edit action-buttons" onClick={handleResetSkill} >
-                        <ClearIcon/>
-                    </Fab>
-                    {
-                        newFlag ? undefined :
-                        <Fab size="small" className="delete-button action-buttons" color="secondary" aria-label="Delete" onClick={() => handleDeleteSkill && handleDeleteSkill(id)} >
-                        <DeleteForeverIcon/>
-                        </Fab>
-                    }
-                    </div>
-                </span> : undefined }
-
+          <div className="icon-container" key="iconContainer">
+            { icon !== "" && typeof brandIconSet[ faIcon ] !== "undefined" ?
+              <FontAwesomeIcon className="skill-icon" icon={brandIconSet[ faIcon ]}/>
+              :
+              undefined
+            }
+        </div>
+        ),
+        (
+          <div key="skillContainer">
+            <div className="skill-name">{name}</div>
+            <div className="skill-progress-container">
+              <div className="skill-row">
+                <span className="skill-label">Skill </span>
+                <div className="spacer"/>
+                {level}/10
+              </div>
+              <LinearProgress variant="determinate" value={level / 10 * 100} />
+              <div className="skill-row">
+                <span className="skill-label">Interest </span>
+                <div className="spacer"/>
+                {interest}
+              </div>
+              <div className="skill-row">
+                <span className="skill-label">Last used </span>
+                <div className="spacer"/>
+                {lastUsed}
+              </div>
             </div>
+          </div>
+        ),
+      ];
+    };
+
+
+    return (
+      ( !newFlag || newFlag && editMode ) ?
+        (
+          <div
+            className={"skill-container" + (editMode ? " clickable" : "")}
+            onClick={handleSelectSkill}
+          >
+
+          { newFlag ?
+            <div className="add-button__container">
+              <AddIcon className="add-button"/>
+            </div> :
+            renderStaticSkillPreivew()
+          }
+
+          { selectedSkill === id ?
+            <span className="input-container">
+              {renderSkillIconSelect()}
+              {renderSkillNameTextInput()}
+              {renderSkillLevelSlider()}
+              {renderInterestLevelSelect()}
+              {renderLastUsedSelect()}
+
+
+              {
+                /**
+                 * Action Buttons
+                 * --------------
+                 */
+              }
+              <div className="action-button-container">
+                <Fab
+                    aria-label="Edit"
+                    className="check-button action-buttons"
+                    onClick={handleUpdateSkillClicked}
+                    size="small"
+                >
+                  <CheckIcon/>
+                </Fab>
+
+                <Fab size="small" aria-label="Edit action-buttons" onClick={handleResetSkill} >
+                  <ClearIcon/>
+                </Fab>
+
+                {
+                  newFlag ?
+                    undefined
+                    :
+                    <Fab
+                      size="small"
+                      className="delete-button action-buttons"
+                      color="secondary"
+                      aria-label="Delete"
+                      onClick={handleDeleteSkill}
+                    >
+                      <DeleteForeverIcon/>
+                    </Fab>
+                }
+              </div>
+            </span>
+            :
+            undefined
+          }
+          </div>
         )
         :
         <div/>

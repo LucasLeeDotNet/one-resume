@@ -12,7 +12,7 @@ import PrintIcon from "@material-ui/icons/Print";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 
 // Component
-import { ExportDialogComponent } from "../dialogs/ExportDialogComponent/ExportDialogComponent";
+import { ExportDialogComponent } from "../dialogs/ExportDialogComponent/ExportDialog.component";
 
 // State
 import { types } from "../../context/reducers";
@@ -47,6 +47,11 @@ const HeaderComponent = () => {
      * Toggle global export mode
      */
     const handletoggleEditMode = (): void => {
+        if ( state.editMode ){
+          actions.snackbar( "Switching to View Mode" );
+        } else {
+          actions.snackbar( "Entering Edit Mode, click on an element to edit it" );
+        }
         dispatch( {
             editMode: !state.editMode,
             type: types.TOGGLE_EDIT,

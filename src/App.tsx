@@ -2,11 +2,11 @@
 import React, { Component, useState, useContext } from 'react';
 
 //Component
-import IntroComponent from './components/IntroComponent/IntroComponent';
-import SkillsComponent from './components/SkillsComponent/SkillsComponent';
+import IntroComponent from './components/IntroComponent/Intro.component';
+import SkillsComponent from './components/SkillsComponent/Skills.component';
 import HeaderComponent from './components/HeaderComponent/Header.component';
 import ExperiencesComponent from './components/ExperiencesComponent/Experiences.component';
-import GenericSnackbarComponent from './components/snackbars/GenericSnackbarComponent';
+import GenericSnackbarComponent from './components/snackbars/GenericSnackbar.component';
 
 //Style
 import './App.scss';
