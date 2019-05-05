@@ -6,7 +6,7 @@ import { StoreContext } from '../../context/StoreContext';
 import { types } from '../../context/reducers';
 
 //Component
-import SkillComponent from './SkillComponent';
+import SkillComponent from './Skill.component';
 
 //Model
 import SkillModel from '../../models/SkillModel';

@@ -4,8 +4,8 @@ import React, { Component, useState, useContext } from 'react';
 //Component
 import IntroComponent from './components/IntroComponent/IntroComponent';
 import SkillsComponent from './components/SkillsComponent/SkillsComponent';
-import HeaderComponent from './components/HeaderComponent/HeaderComponent';
-import ExperiencesComponent from './components/ExperiencesComponent/ExperiencesComponent';
+import HeaderComponent from './components/HeaderComponent/Header.component';
+import ExperiencesComponent from './components/ExperiencesComponent/Experiences.component';
 import GenericSnackbarComponent from './components/snackbars/GenericSnackbarComponent';
 
 //Style
