@@ -104,7 +104,7 @@ const HeaderComponent = () => {
                             variant="contained"
                             onClick={handleOpenExportDialog}
                         >
-                            <ExportIcon/> Export Data Try Something
+                            <ExportIcon/> Export Data
                         </Button>
 
 

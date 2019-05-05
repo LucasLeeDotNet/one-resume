@@ -7,7 +7,7 @@
   export const manifest:ManifestModel = {
     "intro": {
         "name": "Lucas Lee",
-        "position": "Javascript / Frontend / Web Developer",
+        "position": "Javascript - Frontend - Web Developer",
         "statement": "Passionate about Javascript, specializing in rapid development with strong sense of design. Lead frontend development on a new marketing platform for EAB. Experienced with a wide range of skillset that extends from frontend frameworks to containerized Devops and AWS."
     },
     "skills": [
@@ -17,15 +17,15 @@
             "interest": "Highest",
             "icon": "Js",
             "lastUsed": "Current",
-            "id": "db453c01-782a-4763-aaa2-f85471e6e755"
+            "id": "6e8abee1-0531-4c17-9da0-128a96ed1f00"
         },
         {
+            "icon": "Js",
+            "id": "6ba93692-068a-487d-9c33-c737f94bdd8a",
             "name": "Typescript",
             "level": 7,
             "interest": "High",
-            "icon": "",
-            "lastUsed": "Current",
-            "id": "c7c4af10-754d-4dfa-aba2-b50071ff69e1"
+            "lastUsed": "Current"
         },
         {
             "name": "React",
@@ -33,7 +33,7 @@
             "interest": "High",
             "icon": "React",
             "lastUsed": "Current",
-            "id": "bda1777a-e58b-4cad-88f9-131b727e7908"
+            "id": "a7157873-7e90-46b5-8ad5-f47fa2283a3b"
         },
         {
             "name": "Angular",
@@ -41,7 +41,7 @@
             "interest": "High",
             "icon": "Angular",
             "lastUsed": "This Month",
-            "id": "9534b167-e254-44ee-b185-89ae758dede0"
+            "id": "629653c7-f138-4b1b-a408-786da240532e"
         },
         {
             "name": "Node.js",
@@ -49,7 +49,7 @@
             "interest": "High",
             "icon": "Node",
             "lastUsed": "This Month",
-            "id": "4861eb41-95ef-4a9e-8048-4d32ec68b251"
+            "id": "33352bcf-59e7-4616-8a25-6dc7bdc8b7f5"
         },
         {
             "name": "Docker",
@@ -57,7 +57,7 @@
             "interest": "High",
             "icon": "Docker",
             "lastUsed": "Current",
-            "id": "8a012583-f0e3-426f-8146-eb6770629b32"
+            "id": "a993d04b-081e-495d-960b-6ee326889092"
         },
         {
             "name": "AWS",
@@ -65,7 +65,7 @@
             "interest": "High",
             "icon": "Aws",
             "lastUsed": "Current",
-            "id": "f664efe9-5ae6-450f-b14f-bf76c79b6f74"
+            "id": "909d3334-ad49-4e3a-abb1-b5c748e1a67a"
         },
         {
             "name": "React Native",
@@ -73,23 +73,23 @@
             "interest": "High",
             "icon": "React",
             "lastUsed": "Before This Year",
-            "id": "91e796cd-37a4-4808-8cb1-227969361adc"
+            "id": "bc5f93b9-b733-4fd0-8d73-30d3acdeb317"
         },
         {
+            "icon": "Dev",
+            "id": "dedcc504-ba70-4a4a-abc2-a39f5dc8d495",
             "name": "MongoDB",
             "level": 5,
             "interest": "Moderate",
-            "icon": "",
-            "lastUsed": "This Year",
-            "id": "c07934a4-38ee-4968-be3b-987032a8adec"
+            "lastUsed": "This Year"
         },
         {
+            "icon": "Dev",
+            "id": "3d10cdb6-69a5-4d6f-839a-d9e729ee90b8",
             "name": "SQL",
             "level": 5,
             "interest": "Moderate",
-            "icon": "",
-            "lastUsed": "This Year",
-            "id": "4cc7e206-1140-459c-aebf-28edc7306149"
+            "lastUsed": "This Year"
         },
         {
             "name": "Photoshop",
@@ -97,7 +97,7 @@
             "interest": "Moderate",
             "icon": "Adobe",
             "lastUsed": "This Month",
-            "id": "1dc76787-d9cc-407c-ac0c-bd54d48db842"
+            "id": "64d00ad7-4437-4b7a-af76-314b0f5b8f36"
         },
         {
             "name": "Java",
@@ -105,7 +105,7 @@
             "interest": "Moderate",
             "icon": "Java",
             "lastUsed": "Before This Year",
-            "id": "e82b927d-1e18-4771-9dcc-98abb9711da2"
+            "id": "39666cb8-3e64-48b6-8630-43a2df5102d9"
         },
         {
             "name": "JQuery",
@@ -113,26 +113,26 @@
             "interest": "Low",
             "icon": "Js",
             "lastUsed": "This Year",
-            "id": "258e5634-dfd7-43e9-90dc-e568200e53f5"
+            "id": "bdcf32e9-07c5-47d9-b878-0a564f4645cd"
         },
         {
+            "icon": "Adobe",
+            "id": "05c66d96-c70f-4010-88ba-39aa5a4c2252",
             "name": "Coldfusion",
             "level": 6,
             "interest": "Low",
-            "icon": "",
-            "lastUsed": "This Year",
-            "id": "9a788c8f-7ede-4f6d-ac4c-5524648bc666"
+            "lastUsed": "This Year"
         },
         {
-            "id": "43a9a2f5-bb5f-4047-a485-6f71fc1a3cb3",
-            "icon": "",
-            "name": "CSS/SASS",
+            "icon": "Sass",
+            "id": "375eb9e7-537b-40f7-bdf2-68af901f85e0",
+            "name": "CSS/SCSS",
             "level": 7,
             "interest": "High",
             "lastUsed": "Current"
         },
         {
-            "id": "71657f6c-3fc8-48f7-9e69-7061d3051646",
+            "id": "3c880103-098f-4bd7-b81e-1afce6b01985",
             "icon": "Angular",
             "name": "AngularJS",
             "level": 7.5,
@@ -142,10 +142,6 @@
     ],
     "experiences": [
         {
-            "id": "362c670d-db68-4052-80fa-8624cadd299f",
-            "company": "EAB Richmond",
-            "date": "MAY 2015 - PRESENT",
-            "position": "Senior Web Developer",
             "bulletPoints": [
                 {
                     "point": "Currently leading frontend development for the new Marketing Platform",
@@ -157,7 +153,7 @@
                         "Docker",
                         "AWS",
                         "MongoDB",
-                        "CSS/SASS"
+                        "CSS/SCSS"
                     ]
                 },
                 {
@@ -166,7 +162,7 @@
                         "Javascript",
                         "Coldfusion",
                         "JQuery",
-                        "CSS/SASS"
+                        "CSS/SCSS"
                     ]
                 },
                 {
@@ -175,7 +171,7 @@
                         "Angular",
                         "Typescript",
                         "Javascript",
-                        "CSS/SASS",
+                        "Docker",
                         "Docker"
                     ]
                 },
@@ -184,7 +180,7 @@
                     "skills": [
                         "Javascript",
                         "React",
-                        "CSS/SASS",
+                        "CSS/SCSS",
                         "MongoDB",
                         "Node.js",
                         "Docker"
@@ -196,7 +192,7 @@
                         "Javascript",
                         "Coldfusion",
                         "JQuery",
-                        "CSS/SASS"
+                        "CSS/SCSS"
                     ]
                 },
                 {
@@ -204,7 +200,7 @@
                     "skills": [
                         "Javascript",
                         "Coldfusion",
-                        "CSS/SASS"
+                        "CSS/SCSS"
                     ]
                 },
                 {
@@ -212,7 +208,7 @@
                     "skills": [
                         "Javascript",
                         "Coldfusion",
-                        "CSS/SASS",
+                        "CSS/SCSS",
                         "JQuery"
                     ]
                 },
@@ -222,16 +218,16 @@
                         "Javascript",
                         "JQuery",
                         "Coldfusion",
-                        "CSS/SASS"
+                        "CSS/SCSS"
                     ]
                 }
-            ]
+            ],
+            "company": "EAB Richmond",
+            "date": "MAY 2015 - PRESENT",
+            "id": "0af48c06-8926-4397-9795-91201c086ea1",
+            "position": "Senior Web Developer"
         },
         {
-            "id": "2a84c08d-796b-479b-85d7-81a297acea2e",
-            "company": "Point of Sales System for UMI Sushi Bistro, Short Pump",
-            "date": "NOV 2014 - MAY 2015",
-            "position": "Freelance",
             "bulletPoints": [
                 {
                     "point": "Built a AngularJS Touch based POS system that has been in used to serve customer for the last 4 years",
@@ -248,16 +244,16 @@
                     "skills": []
                 },
                 {
-                    "point": "Still currently live in production in 2019",
+                    "point": "Currently live in production, operating in maintenance mode in 2019",
                     "skills": []
                 }
-            ]
+            ],
+            "company": "Point of Sales System for UMI Sushi Bistro, Short Pump",
+            "date": "NOV 2014 - MAY 2015",
+            "id": "764c51b4-f470-4b6e-8beb-1981040747f5",
+            "position": "Freelance"
         },
         {
-            "id": "4906cfa4-febf-4120-9cca-da32b926b2a3",
-            "company": "Shockoe | Mobile by Design",
-            "date": "MAR 2014 - NOV 2014",
-            "position": "Mobile Application Developer",
             "bulletPoints": [
                 {
                     "point": "Built mobile application using a Javascript Platform (Appcelerator)",
@@ -273,14 +269,18 @@
                         "Javascript",
                         "Node.js",
                         "MongoDB",
-                        "CSS/SASS",
+                        "CSS/SCSS",
                         "Photoshop"
                     ]
                 }
-            ]
+            ],
+            "company": "Shockoe | Mobile by Design",
+            "date": "MAR 2014 - NOV 2014",
+            "id": "d3885317-f7a8-49e3-b287-aed3b3405a3d",
+            "position": "Mobile Application Developer"
         },
         {
-            "id": "706a7710-1b5e-4029-b1f6-8dbdf5a71db6",
+            "id": "94034335-ea93-43f4-b583-f24a80e8033b",
             "company": "Virginia Commonwealth University",
             "date": "2009 - 2013",
             "position": "Computer Science, Bachelor's Degree",

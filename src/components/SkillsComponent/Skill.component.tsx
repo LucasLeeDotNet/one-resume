@@ -2,7 +2,6 @@
 import React, { ChangeEvent, useState } from "react";
 
 // Material UI
-import * as brandIcons from "@fortawesome/free-brands-svg-icons";
 import {
   Fab,
   FormControl,
@@ -20,8 +19,9 @@ import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
-
 // FontAwesome
+import * as brandIcons from "@fortawesome/free-brands-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Model
@@ -65,6 +65,35 @@ const SkillComponent = ( props: ISkillProps ) => {
     const faIcon = "fa" + icon;
 
 
+    const generateIconOptions = ( ) => {
+      const generateItem = ( skillIcon: string ) => {
+        const iconName = skillIcon.replace( /^fa/, "" );
+        return (
+          <MenuItem value={iconName}>
+            { skillIcon !== "" ?
+              <FontAwesomeIcon className="small-skill-icon" icon={brandIconSet[ `${skillIcon}` ]}/>
+              :
+              ""
+            } &nbsp;&nbsp;{iconName}
+          </MenuItem>
+        );
+      };
+
+      return Object.keys(brandIconSet).filter( (key) => key !== "fab" && key !== "prefix" ).map( generateItem );
+    };
+
+    const getAllEdits = (): SkillModel => {
+      return {
+          icon: iconEdit,
+          id,
+          interest: interestEdit,
+          lastUsed: lastUsedEdit,
+          level: Number(levelEdit),
+          name: nameEdit,
+      };
+    };
+
+
     /**
      * Reset the skill by loading in the local state with the props
      */
@@ -85,15 +114,8 @@ const SkillComponent = ( props: ISkillProps ) => {
      */
     const handleUpdateSkillClicked = ( event: React.MouseEvent<HTMLElement> ): void => {
         event.stopPropagation();
-        editMode && handleUpdateSkill( {
-            id,
-            icon: iconEdit,
-            name: nameEdit,
-            level: Number(levelEdit),
-            interest: interestEdit,
-            lastUsed: lastUsedEdit,
-        } );
-        newFlag && handleResetSkill();
+        if ( editMode ) { handleUpdateSkill( getAllEdits() ); }
+        if ( newFlag ) { handleResetSkill(); }
     };
 
     return (
@@ -104,39 +126,66 @@ const SkillComponent = ( props: ISkillProps ) => {
                     <div className="add-button__container">
                         <AddIcon className="add-button"/>
                     </div> :
+
+
                     /**
-                    *   Static Preview of the skill
-                    *   ---------------------------
-                    */
+                     * Static Preview of the skill
+                     * ---------------------------
+                     */
                     [ <div className="icon-container" key="iconContainer">
-                        {icon !== "" ? <FontAwesomeIcon className="skill-icon" icon={brandIconSet[ faIcon ]}/> : ""}
+                        {icon !== "" && typeof brandIconSet[ faIcon ] !== "undefined" ?
+                          <FontAwesomeIcon className="skill-icon" icon={brandIconSet[ faIcon ]}/>
+                          :
+                          ""
+                        }
                     </div>,
                     <div key="skillContainer">
                         <div className="skill-name">{name}</div>
                         <div className="skill-progress-container">
-                            <div className="skill-row"> <span className="skill-label">Skill </span> <div className="spacer"/>{level}/10 </div>
+                            <div className="skill-row">
+                              <span className="skill-label">Skill </span>
+                              <div className="spacer"/>
+                              {level}/10
+                            </div>
                             <LinearProgress variant="determinate" value={level / 10 * 100} />
-                            <div className="skill-row"> <span className="skill-label">Interest </span> <div className="spacer"/> {interest}</div>
-                            <div className="skill-row"> <span className="skill-label">Last used </span> <div className="spacer"/> {lastUsed}</div>
+                            <div className="skill-row">
+                              <span className="skill-label">Interest </span>
+                              <div className="spacer"/>
+                              {interest}
+                            </div>
+                            <div className="skill-row">
+                              <span className="skill-label">Last used </span>
+                              <div className="spacer"/>
+                              {lastUsed}
+                            </div>
 
                         </div>
                     </div>]
                 }
+
+
                 { selectedSkill === id ?
                 <span className="input-container">
-                    {/**
-                    *  Icon Input
-                    *   ---------
-                    */}
-                    <TextField
-                        label="Edit Skill Icon"
-                        className="text-input text-input--small"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        onChange={(event: ChangeEvent<HTMLInputElement>) => handleEditIcon(event.target.value)}
-                        value={iconEdit}
-                    />
+
+
+                  { 
+                    /**
+                     * Icon Select for the skill
+                     * -------------------------
+                     */
+                  }
+                  <FormControl className="select-input" >
+                    <InputLabel htmlFor="skill-icon">Select Skills</InputLabel>
+                    <Select
+                      id="skill-icon"
+                      value={iconEdit}
+                      onChange={(event: ChangeEvent<HTMLSelectElement>) => handleEditIcon(event.target.value)}
+                    >
+                      {generateIconOptions()}
+                    </Select>
+                  </FormControl>
+
+
                     {/**
                     *   Skill Name Input
                     *   ----------------
@@ -150,6 +199,8 @@ const SkillComponent = ( props: ISkillProps ) => {
                         onChange={(event: ChangeEvent<HTMLInputElement>) => handleEditName(event.target.value)}
                         value={nameEdit}
                     />
+
+
                     {/**
                     *   Skill Level Input
                     *   -----------------
@@ -166,6 +217,8 @@ const SkillComponent = ( props: ISkillProps ) => {
                         step={0.5}
                     />
                     </div>
+
+
                     {/**
                     *   Interest Select
                     *   ---------------
