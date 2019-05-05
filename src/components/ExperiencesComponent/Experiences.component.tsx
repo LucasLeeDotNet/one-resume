@@ -8,7 +8,7 @@ import { Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 // Component
-import ExperienceComponent from "./ExperienceComponent";
+import ExperienceComponent from "./Experience.component";
 
 // Context
 import { StoreContext } from "../../context/StoreContext";
