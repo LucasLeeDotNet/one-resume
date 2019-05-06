@@ -17,23 +17,23 @@
             "interest": "Highest",
             "icon": "Js",
             "lastUsed": "Current",
-            "id": "6e8abee1-0531-4c17-9da0-128a96ed1f00"
+            "id": "02550eb7-9c5d-45be-bbd5-2cb8c3758387"
         },
         {
             "icon": "Js",
-            "id": "6ba93692-068a-487d-9c33-c737f94bdd8a",
-            "name": "Typescript",
-            "level": 7,
+            "id": "bd7c4068-aa8f-42d0-bce9-31be67b3ef8d",
             "interest": "High",
-            "lastUsed": "Current"
+            "lastUsed": "Current",
+            "level": 8,
+            "name": "Typescript"
         },
         {
-            "name": "React",
-            "level": 7,
-            "interest": "High",
             "icon": "React",
+            "id": "f7e0a597-4e98-4123-8a8e-fa1ce087f431",
+            "interest": "High",
             "lastUsed": "Current",
-            "id": "a7157873-7e90-46b5-8ad5-f47fa2283a3b"
+            "level": 7.5,
+            "name": "React"
         },
         {
             "name": "Angular",
@@ -41,7 +41,7 @@
             "interest": "High",
             "icon": "Angular",
             "lastUsed": "This Month",
-            "id": "629653c7-f138-4b1b-a408-786da240532e"
+            "id": "0c43ec29-66c5-4307-923f-ac533d85428e"
         },
         {
             "name": "Node.js",
@@ -49,7 +49,7 @@
             "interest": "High",
             "icon": "Node",
             "lastUsed": "This Month",
-            "id": "33352bcf-59e7-4616-8a25-6dc7bdc8b7f5"
+            "id": "f0985091-64e5-467d-99fd-9012a7506c75"
         },
         {
             "name": "Docker",
@@ -57,7 +57,7 @@
             "interest": "High",
             "icon": "Docker",
             "lastUsed": "Current",
-            "id": "a993d04b-081e-495d-960b-6ee326889092"
+            "id": "ed892a5a-b4b8-4b91-bcc9-a9cc4da82f41"
         },
         {
             "name": "AWS",
@@ -65,7 +65,7 @@
             "interest": "High",
             "icon": "Aws",
             "lastUsed": "Current",
-            "id": "909d3334-ad49-4e3a-abb1-b5c748e1a67a"
+            "id": "0056a914-3132-4627-89b2-6eaf4de123d2"
         },
         {
             "name": "React Native",
@@ -73,11 +73,11 @@
             "interest": "High",
             "icon": "React",
             "lastUsed": "Before This Year",
-            "id": "bc5f93b9-b733-4fd0-8d73-30d3acdeb317"
+            "id": "8fec605e-4ba7-480d-9659-5f2bcec7d173"
         },
         {
             "icon": "Dev",
-            "id": "dedcc504-ba70-4a4a-abc2-a39f5dc8d495",
+            "id": "1bc5a884-9c72-4e12-bb6c-3e384e5c8264",
             "name": "MongoDB",
             "level": 5,
             "interest": "Moderate",
@@ -85,7 +85,7 @@
         },
         {
             "icon": "Dev",
-            "id": "3d10cdb6-69a5-4d6f-839a-d9e729ee90b8",
+            "id": "889c9ca2-3f11-4e9b-99b3-1c4854a1b7c4",
             "name": "SQL",
             "level": 5,
             "interest": "Moderate",
@@ -97,7 +97,7 @@
             "interest": "Moderate",
             "icon": "Adobe",
             "lastUsed": "This Month",
-            "id": "64d00ad7-4437-4b7a-af76-314b0f5b8f36"
+            "id": "3858f0ac-d632-4384-97f3-64e9394b2be6"
         },
         {
             "name": "Java",
@@ -105,7 +105,7 @@
             "interest": "Moderate",
             "icon": "Java",
             "lastUsed": "Before This Year",
-            "id": "39666cb8-3e64-48b6-8630-43a2df5102d9"
+            "id": "48aaf416-9574-479f-ac45-e3d3c7495f8e"
         },
         {
             "name": "JQuery",
@@ -113,26 +113,26 @@
             "interest": "Low",
             "icon": "Js",
             "lastUsed": "This Year",
-            "id": "bdcf32e9-07c5-47d9-b878-0a564f4645cd"
+            "id": "5c9d310b-5235-4222-afe5-f5ca8da25a7b"
         },
         {
             "icon": "Adobe",
-            "id": "05c66d96-c70f-4010-88ba-39aa5a4c2252",
-            "name": "Coldfusion",
-            "level": 6,
+            "id": "df623773-b1d2-4d43-9a6a-4c3e25d6ab28",
             "interest": "Low",
-            "lastUsed": "This Year"
+            "lastUsed": "This Year",
+            "level": 7,
+            "name": "Coldfusion"
         },
         {
             "icon": "Sass",
-            "id": "375eb9e7-537b-40f7-bdf2-68af901f85e0",
+            "id": "bea1671f-e22d-4b1f-905b-80d34a77d752",
             "name": "CSS/SCSS",
             "level": 7,
             "interest": "High",
             "lastUsed": "Current"
         },
         {
-            "id": "3c880103-098f-4bd7-b81e-1afce6b01985",
+            "id": "cd600701-a2a9-4ca2-a8c3-ceedb5829deb",
             "icon": "Angular",
             "name": "AngularJS",
             "level": 7.5,
@@ -224,7 +224,7 @@
             ],
             "company": "EAB Richmond",
             "date": "MAY 2015 - PRESENT",
-            "id": "0af48c06-8926-4397-9795-91201c086ea1",
+            "id": "e0b2f49c-dcd1-4a0c-b0ff-38604d090a8a",
             "position": "Senior Web Developer"
         },
         {
@@ -250,7 +250,7 @@
             ],
             "company": "Point of Sales System for UMI Sushi Bistro, Short Pump",
             "date": "NOV 2014 - MAY 2015",
-            "id": "764c51b4-f470-4b6e-8beb-1981040747f5",
+            "id": "3fe22f7d-8368-49bb-aba5-e4825949db95",
             "position": "Freelance"
         },
         {
@@ -276,11 +276,11 @@
             ],
             "company": "Shockoe | Mobile by Design",
             "date": "MAR 2014 - NOV 2014",
-            "id": "d3885317-f7a8-49e3-b287-aed3b3405a3d",
+            "id": "74af64f8-323d-4cbb-a15a-b360c5470b8c",
             "position": "Mobile Application Developer"
         },
         {
-            "id": "94034335-ea93-43f4-b583-f24a80e8033b",
+            "id": "f7340ce1-7c5a-4151-8893-a3570b1f5a73",
             "company": "Virginia Commonwealth University",
             "date": "2009 - 2013",
             "position": "Computer Science, Bachelor's Degree",
