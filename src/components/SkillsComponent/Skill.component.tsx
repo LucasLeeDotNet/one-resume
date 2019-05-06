@@ -328,7 +328,7 @@ const SkillComponent = ( props: ISkillProps ) => {
               <div className="skill-row">
                 <span className="skill-label">Last used </span>
                 <div className="spacer"/>
-                {lastUsed}
+                <div className="last-used-value">{lastUsed}</div>
               </div>
             </div>
           </div>
