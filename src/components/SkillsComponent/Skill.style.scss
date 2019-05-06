@@ -110,18 +110,16 @@ Skill in edit mode
     .action-button-container{ 
       display: flex;
       flex-direction: row;
+      justify-content: flex-end;
 
       .action-button{ 
         border-radius: 0.8rem;
+        margin-right: 0.5rem;
       }
       
       .check-button{ 
         background-color: #690 !important;
         color: white !important;
-      }
-    
-      .delete-button{ 
-        margin-left: 0.5rem !important;
       }
     }
   }
