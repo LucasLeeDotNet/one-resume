@@ -12,11 +12,5 @@ TODO:
 - Add drag and drop for reordering for list elements in the app
 - Write a better readme
 - Add testing
-- Fix the generate pdf functionality
-- Fix the skill level type issue (input is a string but the underlining type is a number, while typing a decimal it will read it as NaN)
-
-Use the usual start script and build script to get started
-
-### `npm start`
-
-### `npm run build`
+- <s>Fix the generate pdf functionality</s> Removed functionality
+- <s>Fix the skill level type issue (input is a string but the underlining type is a number, while typing a decimal it will read it as NaN)</s> Fixed by replacing it with a slider input that outputs a number
