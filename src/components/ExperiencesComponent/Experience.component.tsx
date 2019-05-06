@@ -2,7 +2,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 // Material UI
-import { Fab, TextField } from "@material-ui/core";
+import { Fab, TextField, Tooltip } from "@material-ui/core";
 
 // Materion UI Icon
 import AddIcon from "@material-ui/icons/Add";
@@ -177,6 +177,7 @@ const ExperienceComponent = ( props: IExperienceComponentProps ) => {
       handleEditBulletPoints( newBulletPoints );
     };
 
+
     return (
       <div>
         { editMode && selectedExperience === id ?
@@ -285,15 +286,24 @@ const ExperienceComponent = ( props: IExperienceComponentProps ) => {
                */
             }
             <div className="action-button-container">
-              <Fab className="check-button__no-margin" aria-label="Save" onClick={_handleUpdateExperience} >
-                  <CheckIcon/>
-              </Fab>
-              <Fab aria-label="Clear" onClick={handleResetExperience} >
-                  <ClearIcon/>
-              </Fab>
-              <Fab color="secondary" aria-label="Delete" onClick={() => handleDeleteExperience(id)} >
-                  <DeleteForeverIcon/>
-              </Fab>
+              <Tooltip title="Save Experience">
+                <Fab className="check-button action-button" aria-label="Save Experience" onClick={_handleUpdateExperience} >
+                    <CheckIcon/>
+                </Fab>
+              </Tooltip>
+
+              <Tooltip title="Cancel">
+                <Fab className="action-button" aria-label="Cancel" onClick={handleResetExperience} >
+                    <ClearIcon/>
+                </Fab>
+              </Tooltip>
+
+              <Tooltip title="Delete Experience">
+                <Fab className="action-button" color="secondary" aria-label="Delete Experience" onClick={() => handleDeleteExperience(id)} >
+                    <DeleteForeverIcon/>
+                </Fab>
+              </Tooltip>
+
             </div>
         </div>
         :
@@ -309,10 +319,10 @@ const ExperienceComponent = ( props: IExperienceComponentProps ) => {
             <h2>{position}</h2>
             {bulletPoints.map( ( point: BulletModel,
                                  index: number ) =>
-                <div key={index}>
+                <div className="bullet-container" key={index}>
                   <div key={index} className="bullet"><AddIcon className="bullet-icon"/> {point.point}</div>
                   <div className="nonedit-skill-list">
-                    { point.skills.map( ( skillName: string, index: number ) => {
+                    { point.skills.sort().map( ( skillName: string, index: number ) => {
                       const skillObject: SkillModel = skillsMapByName[skillName];
                       return (
                         <div className="nonedit-skill-item" key={index}>{ skillObject && skillObject.icon !== "" ?

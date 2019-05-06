@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SkillModel from "../../models/SkillModel";
 
 // Style
-import "./Experience.style.scss";
+import "./BulletPointSkill.style.scss";
 
 export interface IBulletPointSkillProps {
   bulletIndex: number;
@@ -55,7 +55,7 @@ const BulletPointSkill = ( props: IBulletPointSkillProps ) => {
   const handleDeleteSkill = (): void => onDeleteSkill( bulletIndex, skillIndex );
 
   return (
-    <div>
+    <div className="skill-edit-container">
 
 
       {

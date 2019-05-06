@@ -1,8 +1,8 @@
-export default class SkillModel{ 
-    name:  string ='';
-    level: number = 5;
-    interest: 'Low'|'Moderate'|'High'|'Highest'| string = 'High'; 
-    lastUsed: 'Before This Year'|'This Year'|'Last Month'|'This Month'|'Current' | string = 'Current';
-    icon: string = '';
-    id?: string = "new";
+export default class SkillModel {
+    public name: string = "";
+    public level: number = 5;
+    public interest: "Low"|"Moderate"|"High"|"Highest"| string = "High";
+    public lastUsed: "Before This Year"|"This Year"|"Last Month"|"This Month"|"Current" | string = "Current";
+    public icon: string = "";
+    public id?: string = "new";
 }

@@ -2,12 +2,12 @@
 import React, { ChangeEvent } from "react";
 
 // Material UI
-import { TextField } from "@material-ui/core";
+import { TextField, Tooltip } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 
 // Materion UI Icon
 import AddIcon from "@material-ui/icons/Add";
-import DeleteIcon from "@material-ui/icons/Delete";
+import ClearIcon from "@material-ui/icons/Clear";
 
 
 // Component
@@ -17,7 +17,7 @@ import BulletPointSkill from "./BulletPointskill.component";
 import SkillModel from "../../models/SkillModel";
 
 // Style
-import "./Experience.style.scss";
+import "./BulletPoint.style.scss";
 
 export interface IBulletPointProps {
   onAddNewSkill: ( index: number ) => void;
@@ -50,7 +50,7 @@ const BulletPoint = ( props: IBulletPointProps ) => {
   /**
    * Adds a new skill to the bullet point
    */
-  const handleAddNewSkill = ():void => onAddNewSkill( index );
+  const handleAddNewSkill = (): void => onAddNewSkill( index );
 
 
   /**
@@ -69,7 +69,21 @@ const BulletPoint = ( props: IBulletPointProps ) => {
   const handleDeleteClick = (): void => onDeleteBulletPoint( index );
 
   return (
-    <div>
+    <div className="bulletpoint-container">
+      <div className="bulletpoint-header">
+        <label className="bulletpoint-label">Bullet Points {index + 1}</label>
+        {
+          /**
+           * Delete Bullet point Button
+           * --------------------------
+           */
+        }
+        <Tooltip title="Delete Bullet point">
+          <IconButton className="delete-icon" aria-label="Delete Bullet Point" onClick={handleDeleteClick}>
+            <ClearIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
       <div className="bulletpoint-row">
 
 
@@ -80,7 +94,7 @@ const BulletPoint = ( props: IBulletPointProps ) => {
            */
         }
         <TextField
-          label={"Edit Point " + (index + 1)}
+          label="Bullet Point Text"
           className="bullet-input fullwidth-input"
           InputLabelProps={{
               shrink: true,
@@ -88,19 +102,6 @@ const BulletPoint = ( props: IBulletPointProps ) => {
           onChange={handleBulletPointTextChange}
           value={point}
         />
-
-
-        {
-          /**
-           * Delete Bullet point Button
-           * --------------------------
-           */
-        }
-        <div>
-          <IconButton aria-label="Delete" onClick={handleDeleteClick}>
-            <DeleteIcon />
-          </IconButton>
-        </div>
 
 
       </div>{/** End of bulletpoint-row */}
@@ -111,24 +112,12 @@ const BulletPoint = ( props: IBulletPointProps ) => {
 
         {
           /**
-           * Add Skill Button
-           * ----------------
-           */
-        }
-        <div>
-          <IconButton className="add-skill-button" aria-label="add" onClick={handleAddNewSkill}>
-            <AddIcon />
-          </IconButton>
-        </div>
-
-
-        {
-          /**
            * List of skills
            * --------------
            */
         }
         <div className="skills-container">
+          <div className="skill-edit-label">Skills</div>
           {
             skills.map( ( skillName: string, skillIndex: number ) => {
               return (
@@ -144,6 +133,19 @@ const BulletPoint = ( props: IBulletPointProps ) => {
               );
             } )
           }
+
+
+          {
+            /**
+             * Add Skill Button
+             * ----------------
+             */
+          }
+          <div className="add-skill-container">
+            <IconButton className="add-skill-button" aria-label="add" onClick={handleAddNewSkill}>
+              <AddIcon />
+            </IconButton>
+          </div>
         </div>
       </div>
     </div>

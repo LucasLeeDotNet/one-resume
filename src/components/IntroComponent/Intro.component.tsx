@@ -22,6 +22,7 @@ const IntroComponent = ( props: IIntroComponentProps ) => {
     const { position, name, statement }: IntroModel = state.intro;
     const editMode: boolean = state.editMode;
 
+
     /**
      * If editMode is off, ensure local edit state are turned off
      */
@@ -33,12 +34,18 @@ const IntroComponent = ( props: IIntroComponentProps ) => {
         }
     });
 
-    // :ocal state
+
+    // local state
     const [ statementEditMode, toggleStatementEditMode ] = useState( false );
     const [ positionEditMode, togglePositionEditMode ] = useState( false );
     const [ nameEditMode, toggleNameEditMode ] = useState( false );
 
-    // Simple update handlers
+
+    /**
+     * Statement Input Update
+     * 
+     * @param {ChangeEvent<HTMLInputElement>} event 
+     */
     const handleStatementChange = ( event: ChangeEvent<HTMLInputElement> ) => {
         dispatch(
             {
@@ -48,11 +55,17 @@ const IntroComponent = ( props: IIntroComponentProps ) => {
         );
     };
 
+
+    /**
+     * Position Input Update
+     * 
+     * @param {ChangeEvent<HTMLInputElement>} event
+     */
     const handlePositionChange = ( event: ChangeEvent<HTMLInputElement> ) => {
         dispatch(
             {
-                type: types.UPDATE_POSITION,
-                position: event.target.value,
+              position: event.target.value,
+              type: types.UPDATE_POSITION,
             },
         );
     };
@@ -60,8 +73,8 @@ const IntroComponent = ( props: IIntroComponentProps ) => {
     const handleNameChange = ( event: ChangeEvent<HTMLInputElement> ) => {
         dispatch(
             {
-                type: types.UPDATE_NAME,
-                name: event.target.value,
+              name: event.target.value,
+              type: types.UPDATE_NAME,
             },
         );
     };

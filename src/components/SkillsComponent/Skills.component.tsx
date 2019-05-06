@@ -42,9 +42,10 @@ const SkillsComponent = ( ) => {
   return (
     <div className={"skills-container"} >
       <SkillComponent
-        {...newSkill} newFlag={true}
+        {...newSkill}
         editMode={editMode}
         key="new"
+        newFlag={true}
         onUpdateSkill={handleUpdateSkill}
         onSelectSkill={handleSelectSkill}
         selectedSkill={selectedSkill}

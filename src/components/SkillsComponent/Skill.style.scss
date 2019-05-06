@@ -9,10 +9,13 @@ $accentColor: #3f51b5;
   letter-spacing: 0em;
 }
 
-
+/*
+Skill in view mode
+------------------
+*/
 .skill-container{ 
     margin: 1rem;
-    padding: 1.5rem;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
     border-radius: 1.5rem;
@@ -39,6 +42,7 @@ $accentColor: #3f51b5;
     .skill-name{ 
       @include lightFont();
     }
+
     .skill-progress-container{ 
       width:100%;
 
@@ -58,9 +62,13 @@ $accentColor: #3f51b5;
       }
     }
   }
-
 }
 
+
+/*
+Skill in edit mode
+------------------
+*/
 .selected-skill{ 
   border: 2px solid $accentColor;
 
@@ -95,6 +103,10 @@ $accentColor: #3f51b5;
       margin: 0.5rem;
     }
   
+    .text-input--small{ 
+      width: 6rem;    
+    }
+
     .action-button-container{ 
       display: flex;
       flex-direction: row;
@@ -115,6 +127,11 @@ $accentColor: #3f51b5;
   }
 }
 
+
+/*
+Add Skill Button
+----------------
+*/
 .add-button__container{ 
   display: flex;
   align-items: center;
@@ -130,10 +147,11 @@ $accentColor: #3f51b5;
   }
 }
 
-.text-input--small{ 
-  width: 6rem;    
-}
 
+/*
+Utility
+-------
+*/
 .clickable:hover{ 
-cursor: pointer;
+  cursor: pointer;
 }

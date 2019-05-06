@@ -1,5 +1,5 @@
-export default class GenericSnackbarModel{ 
-  open: boolean = false;
-  hideDuration: number = 2000;
-  message: string = ''
+export default class GenericSnackbarModel {
+  public open: boolean = false;
+  public hideDuration: number = 2000;
+  public message: string = "";
 }

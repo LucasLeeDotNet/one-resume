@@ -63,7 +63,7 @@ const ExperiencesComponent = ( ) => {
 
 
     return (
-      <div>
+      <div className="experiences-contaienr">
 
 
         {
