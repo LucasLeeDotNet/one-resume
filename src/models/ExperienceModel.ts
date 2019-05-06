@@ -1,14 +1,9 @@
-import uuid from 'uuid/v4';
+import BulletModel from "./BulletModel";
 
-export class BulletModel { 
-    point: string = 'point';
-    skills: string[] = [];
-}
-
-export default class ExperienceModel{ 
-    id?: string = 'new';
-    position:  string ="Developer";
-    company: string ="Company";
-    bulletPoints: BulletModel[] = []; 
-    date: string = "XXXX-XXXX";
+export default class ExperienceModel {
+    public id?: string = "new";
+    public position: string = "Developer";
+    public company: string = "Company";
+    public bulletPoints: BulletModel[] = [];
+    public date: string = "XXXX-XXXX";
 }

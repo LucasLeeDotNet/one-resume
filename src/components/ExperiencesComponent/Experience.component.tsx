@@ -18,7 +18,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BulletPoint from "./BulletPoint.component";
 
 // Model
-import ExperienceModel, { BulletModel } from "../../models/ExperienceModel";
+import BulletModel from "../../models/BulletModel";
+import ExperienceModel from "../../models/ExperienceModel";
 import SkillModel from "../../models/SkillModel";
 
 // Style

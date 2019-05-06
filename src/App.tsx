@@ -1,33 +1,34 @@
-//React
-import React, { Component, useState, useContext } from 'react';
+// React
+import React, { useContext } from "react";
 
-//Component
-import IntroComponent from './components/IntroComponent/Intro.component';
-import SkillsComponent from './components/SkillsComponent/Skills.component';
-import HeaderComponent from './components/HeaderComponent/Header.component';
-import ExperiencesComponent from './components/ExperiencesComponent/Experiences.component';
-import GenericSnackbarComponent from './components/snackbars/GenericSnackbar.component';
+// Component
+import ExperiencesComponent from "./components/ExperiencesComponent/Experiences.component";
+import HeaderComponent from "./components/HeaderComponent/Header.component";
+import IntroComponent from "./components/IntroComponent/Intro.component";
+import SkillsComponent from "./components/SkillsComponent/Skills.component";
+import GenericSnackbarComponent from "./components/snackbars/GenericSnackbar.component";
 
-//Style
-import './App.scss';
-import { StoreContext } from './context/StoreContext';
+// Style
+import "./App.scss";
+import { StoreContext } from "./context/StoreContext";
 
-export interface AppProps {}
-const App = ( props: AppProps ) => {
+const App = ( ) => {
 
-  const { state, dispatch, actions } = useContext( StoreContext );
+  const { actions } = useContext( StoreContext );
+
 
   /**
    * Readded toolbar clicking in the window after printout
    */
-  const handlePrintModeClick = () => { 
+  const handlePrintModeClick = () => {
     actions.handlePrintModeToggle( false );
-  }
+  };
+
 
   return (
     <div className="App">
       <HeaderComponent />
-      <div className="content-container" onClick={ handlePrintModeClick }>
+      <div className="content-container" onClick={handlePrintModeClick}>
         <div className="content">
           <IntroComponent/>
           <SkillsComponent/>
@@ -37,6 +38,6 @@ const App = ( props: AppProps ) => {
       <GenericSnackbarComponent/>
     </div>
   );
-}
+};
 
 export default App;

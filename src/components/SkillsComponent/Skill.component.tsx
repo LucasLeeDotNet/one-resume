@@ -1,5 +1,5 @@
 // React
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, MouseEvent } from "react";
 
 // Material UI
 import {
@@ -10,6 +10,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  Tooltip,
 } from "@material-ui/core";
 import Slider from "@material-ui/lab/Slider";
 
@@ -71,10 +72,10 @@ const SkillComponent = ( props: ISkillProps ) => {
      * @returns {JSX.Element[]}
      */
     const generateIconOptions = ( ): JSX.Element[] => {
-      const generateItem = ( skillIcon: string ) => {
+      const generateItem = ( skillIcon: string, index: number ) => {
         const iconName = skillIcon.replace( /^fa/, "" );
         return (
-          <MenuItem value={iconName}>
+          <MenuItem key={index} value={iconName}>
             { skillIcon !== "" ?
               <FontAwesomeIcon className="small-skill-icon" icon={brandIconSet[ `${skillIcon}` ]}/>
               :
@@ -111,8 +112,11 @@ const SkillComponent = ( props: ISkillProps ) => {
      *
      * @returns {void}
      */
-    const handleSelectSkill = (): void => {
-      if ( editMode && typeof id === "string" ) { onSelectSkill( selectedSkill !== id ? id : selectedSkill ); }
+    const handleSelectSkill = ( event: MouseEvent<HTMLElement> ): void => {
+      if ( editMode && typeof id === "string" ) { 
+        event.currentTarget.scrollIntoView();
+        onSelectSkill( selectedSkill !== id ? id : selectedSkill ); 
+      }
     };
 
 
@@ -307,7 +311,7 @@ const SkillComponent = ( props: ISkillProps ) => {
         </div>
         ),
         (
-          <div key="skillContainer">
+          <div className="skill-info-container" key="skillContainer">
             <div className="skill-name">{name}</div>
             <div className="skill-progress-container">
               <div className="skill-row">
@@ -337,13 +341,18 @@ const SkillComponent = ( props: ISkillProps ) => {
       ( !newFlag || newFlag && editMode ) ?
         (
           <div
-            className={"skill-container" + (editMode ? " clickable" : "")}
+            className={"skill-container" +
+            ( editMode ? " clickable" : "" ) +
+            ( selectedSkill === id ? " selected-skill" : "" )}
             onClick={handleSelectSkill}
           >
 
           { newFlag ?
             <div className="add-button__container">
               <AddIcon className="add-button"/>
+              <div className="new-skill-label">
+                Add New Skill
+              </div>
             </div> :
             renderStaticSkillPreivew()
           }
@@ -364,32 +373,38 @@ const SkillComponent = ( props: ISkillProps ) => {
                  */
               }
               <div className="action-button-container">
-                <Fab
-                    aria-label="Edit"
-                    className="check-button action-buttons"
-                    onClick={handleUpdateSkillClicked}
-                    size="small"
-                >
-                  <CheckIcon/>
-                </Fab>
+                <Tooltip title="Save">
+                  <Fab
+                      aria-label="Save"
+                      className="check-button action-button"
+                      onClick={handleUpdateSkillClicked}
+                      size="small"
+                  >
+                    <CheckIcon/>
+                  </Fab>
+                </Tooltip>
 
-                <Fab size="small" aria-label="Edit action-buttons" onClick={handleResetSkill} >
-                  <ClearIcon/>
-                </Fab>
+                <Tooltip title="Cancel">
+                  <Fab size="small" aria-label="Cancel" className="action-button" onClick={handleResetSkill} >
+                    <ClearIcon/>
+                  </Fab>
+                </Tooltip>
 
                 {
                   newFlag ?
                     undefined
                     :
-                    <Fab
-                      size="small"
-                      className="delete-button action-buttons"
-                      color="secondary"
-                      aria-label="Delete"
-                      onClick={handleDeleteSkill}
-                    >
-                      <DeleteForeverIcon/>
-                    </Fab>
+                    <Tooltip title="Delete">
+                      <Fab
+                        size="small"
+                        className="delete-button action-button"
+                        color="secondary"
+                        aria-label="Delete"
+                        onClick={handleDeleteSkill}
+                      >
+                        <DeleteForeverIcon/>
+                      </Fab>
+                    </Tooltip>
                 }
               </div>
             </span>

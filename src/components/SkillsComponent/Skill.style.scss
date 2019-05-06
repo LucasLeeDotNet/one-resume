@@ -1,12 +1,15 @@
-.add-button{ 
-    font-size:5rem !important;
-    color: #3f51b5;
+$accentColor: #3f51b5;
+
+@mixin lightFont(){ 
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.33;
+  letter-spacing: 0em;
 }
 
-.add-button__container{ 
-    display: flex;
-    align-items: center;
-}
+
 .skill-container{ 
     margin: 1rem;
     padding: 1.5rem;
@@ -17,91 +20,116 @@
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     min-width: 15rem;
     justify-content: space-between;
-}
 
-.skill-icon{ 
-    font-size:4rem;
-    margin-right:0.5rem;
-}
-
-.icon-container{ 
+  .icon-container{ 
     display:flex;
     align-items: center;
+
+    .skill-icon{ 
+      font-size:4rem;
+      margin-right:0.5rem;
+    }
+  }
+
+  .skill-info-container{ 
+    width: 100%;
+    max-width: 10rem;
+    margin-left: 0.5rem;
+    
+    .skill-name{ 
+      @include lightFont();
+    }
+    .skill-progress-container{ 
+      width:100%;
+
+      .skill-row{ 
+        display:flex;
+        
+        .skill-label{ 
+          padding: 0;
+          font-size: 0.8rem;
+          margin-right:0.5rem;
+          color: rgba(0,0,0,0.6);
+        }
+      }
+    }
+  }
+
 }
 
-.skill-progress-container{ 
-    width:100%;
-}
+.selected-skill{ 
+  border: 2px solid $accentColor;
 
-.skill-label{ 
-    padding: 0;
-    font-size: 0.8rem;
-    margin-right:0.5rem;
-    color: rgba(0,0,0,0.6);
-}
-
-.skill-row{ 
-    display:flex;
-
-}
-
-.skill-name{ 
-    font-size: 1.5rem;
-}
-
-.text-input{ 
-    margin: 0.5rem !important;
-}
-
-.text-input--small{ 
-    width: 6rem;    
-}
-
-div.select-input{ 
-    margin: 0.5rem;
-}
-
-.check-button{ 
-    background-color: #690 !important;
-    color: white !important;
-}
-
-.delete-button{ 
-  margin-left: 0.5rem !important;
-}
-
-.input-container{ 
+  .input-container{ 
     display:flex;
     margin-left: 0.5rem;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .skill-level-container{ 
+      display: flex;
+      flex-direction: column;
+
+      .skill-level-label{ 
+        color: rgba(0, 0, 0, 0.54);
+        padding: 0;
+        font-size: 0.8rem;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+  
+      .skill-level-value{ 
+        font-size: 16px;
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    .select-input, .skill-info-container, .skill-level-container, .text-input, .action-button-container{ 
+      width: 12rem;
+      margin: 0.5rem;
+    }
+  
+    .action-button-container{ 
+      display: flex;
+      flex-direction: row;
+
+      .action-button{ 
+        border-radius: 0.8rem;
+      }
+      
+      .check-button{ 
+        background-color: #690 !important;
+        color: white !important;
+      }
+    
+      .delete-button{ 
+        margin-left: 0.5rem !important;
+      }
+    }
+  }
+}
+
+.add-button__container{ 
+  display: flex;
+  align-items: center;
+
+  .add-button{ 
+    font-size:5rem !important;
+    color: $accentColor;
+  }
+
+  .new-skill-label{ 
+    @include lightFont();
+    width: 10rem;
+  }
+}
+
+.text-input--small{ 
+  width: 6rem;    
 }
 
 .clickable:hover{ 
-  cursor: pointer;
-}
-
-.action-button-container{ 
-  display: flex;
-  flex-direction: row;
-}
-
-.skill-level-container{ 
-  width: 7rem;
-  display:flex;
-  flex-direction: column;
-  height: 2.9rem;
-}
-
-.skill-level-container .skill-level-label{ 
-  color: rgba(0, 0, 0, 0.54);
-  padding: 0;
-  font-size: 0.8rem;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-
-.skill-level-value{ 
-  font-size: 16px;
-  margin-bottom: 0.4rem;
+cursor: pointer;
 }
