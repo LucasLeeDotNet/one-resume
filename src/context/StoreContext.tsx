@@ -1,25 +1,35 @@
 import React, { createContext, useReducer } from 'react';
 import { reducer } from './reducers';
 import { initialState } from './initialState';
-import { useActions } from './actions';
+import { useActions, IActionsModel } from './actions';
+import IStateModel from '../models/StateModel';
 
 interface IStoreProvider{ 
   children: JSX.Element;
 }
 
-//Create the reducer
-const [state, dispatch] = useReducer( reducer, initialState );
+interface IStoreContext{ 
+  state: IStateModel,
+  dispatch: React.Dispatch<any>
+  actions: IActionsModel
+}
 
-//Create a action handler
-const actions = useActions( state, dispatch );
-
-//Create the initial value for the new context
-const InitialStoreProviderValue = { state, dispatch, actions };
-
-//Create the context
-const StoreContext = createContext( InitialStoreProviderValue );
+let StoreContext: React.Context<IStoreContext>;
 
 const StoreProvider = ( { children }: IStoreProvider): JSX.Element => { 
+
+  //Create the reducer
+  const [state, dispatch] = useReducer( reducer, initialState );
+
+  //Create a action handler
+  const actions = useActions( state, dispatch );
+
+  //Create the initial value for the new context
+  const InitialStoreProviderValue = { state, dispatch, actions };
+
+  //Create the context
+  StoreContext = createContext( InitialStoreProviderValue );
+
   return( 
     <StoreContext.Provider value={InitialStoreProviderValue}>
       {children}

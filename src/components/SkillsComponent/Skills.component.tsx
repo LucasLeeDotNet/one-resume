@@ -41,15 +41,20 @@ const SkillsComponent = ( ) => {
 
   return (
     <div className={"skills-container"} >
-      <SkillComponent
-        {...newSkill}
-        editMode={editMode}
-        key="new"
-        newFlag={true}
-        onUpdateSkill={handleUpdateSkill}
-        onSelectSkill={handleSelectSkill}
-        selectedSkill={selectedSkill}
-      />
+      {
+        editMode ? 
+        <SkillComponent
+          {...newSkill}
+          editMode={editMode}
+          key="new"
+          newFlag={true}
+          onUpdateSkill={handleUpdateSkill}
+          onSelectSkill={handleSelectSkill}
+          selectedSkill={selectedSkill}
+        />
+        :
+        undefined
+      }
       { skills.map ( ( skill: SkillModel ) =>
         <SkillComponent
           {...skill}

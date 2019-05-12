@@ -10,6 +10,16 @@ import uuid from "uuid/v4";
 import ExperienceModel from "../models/ExperienceModel";
 declare const html2pdf: Function;
 
+export interface IActionsModel{ 
+  deleteExperience: ( id: string ) => void;
+  deleteSkill: ( id: string ) => void;
+  handlePrintModeToggle: ( printMode: boolean ) => void;
+  handlePrintPdf: () => void;
+  snackbar: ( message: string, hideDuration?: number) => void;
+  updateExperience: ( experience: ExperienceModel, selectedExperience?: string ) => void;
+  updateSkill: ( skill: SkillModel ) => void;
+}
+
 export const useActions = (state: IStateModel, dispatch: Function) => {
 
   /**

@@ -48,10 +48,14 @@ Experience view mode
 
   .nonedit-skill-list{
     display: flex;
+    flex-wrap:wrap;
+    align-content: space-between;
+
     margin-left: 2.3rem;
     margin-bottom: 2rem;
     margin-top: 0.5rem;
     .nonedit-skill-item{ 
+      margin-bottom: 0.5rem;
       margin-right: 1rem;
       border-radius: 0.5rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
