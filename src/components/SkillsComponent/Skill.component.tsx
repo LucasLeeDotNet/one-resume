@@ -113,7 +113,7 @@ const SkillComponent = ( props: ISkillProps ) => {
      * @returns {void}
      */
     const handleSelectSkill = ( event: MouseEvent<HTMLElement> ): void => {
-      if ( editMode && typeof id === "string" ) {
+      if ( editMode && typeof id === "string" && selectedSkill !== id ) {
         // event.currentTarget.scrollIntoView();
         onSelectSkill( selectedSkill !== id ? id : selectedSkill );
       }
