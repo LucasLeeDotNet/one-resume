@@ -16,19 +16,10 @@ const App = ( ) => {
 
   const { actions } = useContext( StoreContext );
 
-
-  /**
-   * Readded toolbar clicking in the window after printout
-   */
-  const handlePrintModeClick = () => {
-    actions.handlePrintModeToggle( false );
-  };
-
-
   return (
     <div className="App">
       <HeaderComponent />
-      <div className="content-container" onClick={handlePrintModeClick}>
+      <div className="content-container">
         <div className="content">
           <IntroComponent/>
           <SkillsComponent/>
