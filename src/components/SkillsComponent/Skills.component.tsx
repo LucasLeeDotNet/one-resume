@@ -42,7 +42,7 @@ const SkillsComponent = ( ) => {
   return (
     <div className={"skills-container"} >
       {
-        editMode ? 
+        editMode ?
         <SkillComponent
           {...newSkill}
           editMode={editMode}

@@ -1,5 +1,5 @@
 // React
-import React, { ChangeEvent, useState, MouseEvent } from "react";
+import React, { ChangeEvent, MouseEvent, useState } from "react";
 
 // Material UI
 import {
@@ -113,9 +113,9 @@ const SkillComponent = ( props: ISkillProps ) => {
      * @returns {void}
      */
     const handleSelectSkill = ( event: MouseEvent<HTMLElement> ): void => {
-      if ( editMode && typeof id === "string" ) { 
+      if ( editMode && typeof id === "string" ) {
         // event.currentTarget.scrollIntoView();
-        onSelectSkill( selectedSkill !== id ? id : selectedSkill ); 
+        onSelectSkill( selectedSkill !== id ? id : selectedSkill );
       }
     };
 

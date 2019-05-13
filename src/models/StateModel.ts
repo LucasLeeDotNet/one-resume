@@ -5,8 +5,6 @@ import IntroModel from "../models/IntroModel";
 import SkillModel from "../models/SkillModel";
 
 export default interface IStateModel {
-  actions?: any;
-  dispatch?: any;
   editMode: boolean;
   experiences: ExperienceModel[];
   genericSnackbar: GenericSnackbarModel;
@@ -15,5 +13,4 @@ export default interface IStateModel {
   skills: SkillModel[];
   selectedExperience: string;
   selectedSkill: string;
-  state?: any;
 }
