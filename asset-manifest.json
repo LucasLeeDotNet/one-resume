@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.50236874.chunk.css",
-  "main.js": "/static/js/main.edd19280.chunk.js",
-  "main.js.map": "/static/js/main.edd19280.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-  "static/js/2.412c97cf.chunk.js": "/static/js/2.412c97cf.chunk.js",
-  "static/js/2.412c97cf.chunk.js.map": "/static/js/2.412c97cf.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.40d963f9e2c8525b15cadcca0c76f163.js": "/precache-manifest.40d963f9e2c8525b15cadcca0c76f163.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.50236874.chunk.css.map": "/static/css/main.50236874.chunk.css.map"
+  "main.css": "/one-resume/static/css/main.50236874.chunk.css",
+  "main.js": "/one-resume/static/js/main.179e4935.chunk.js",
+  "main.js.map": "/one-resume/static/js/main.179e4935.chunk.js.map",
+  "runtime~main.js": "/one-resume/static/js/runtime~main.154ccc01.js",
+  "runtime~main.js.map": "/one-resume/static/js/runtime~main.154ccc01.js.map",
+  "static/js/2.412c97cf.chunk.js": "/one-resume/static/js/2.412c97cf.chunk.js",
+  "static/js/2.412c97cf.chunk.js.map": "/one-resume/static/js/2.412c97cf.chunk.js.map",
+  "index.html": "/one-resume/index.html",
+  "precache-manifest.7b437a04295db924eee891babe550c8c.js": "/one-resume/precache-manifest.7b437a04295db924eee891babe550c8c.js",
+  "service-worker.js": "/one-resume/service-worker.js",
+  "static/css/main.50236874.chunk.css.map": "/one-resume/static/css/main.50236874.chunk.css.map"
 }
