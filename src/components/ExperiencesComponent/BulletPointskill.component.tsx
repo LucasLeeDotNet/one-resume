@@ -82,7 +82,6 @@ const BulletPointSkill = ( props: IBulletPointSkillProps ) => {
            * ------------------------
            */
         }
-        <MenuItem value="">New Skill</MenuItem>
         { stateSkills.map( ( skill: SkillModel ) => {
           return (
             <MenuItem key={skill.name} value={skill.name}>

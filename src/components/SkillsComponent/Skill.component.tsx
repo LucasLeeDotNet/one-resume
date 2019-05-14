@@ -195,9 +195,6 @@ const SkillComponent = ( props: ISkillProps ) => {
         name: "interest",
         }}
       >
-        <MenuItem value="">
-        <em>None</em>
-        </MenuItem>
         <MenuItem value="Low">Low</MenuItem>
         <MenuItem value="Moderate">Moderate</MenuItem>
         <MenuItem value="High">High</MenuItem>
@@ -223,9 +220,6 @@ const SkillComponent = ( props: ISkillProps ) => {
         name: "lastUsed",
         }}
       >
-        <MenuItem value="">
-        <em>None</em>
-        </MenuItem>
         <MenuItem value="Current">Current</MenuItem>
         <MenuItem value="This Month">This Month</MenuItem>
         <MenuItem value="Last Month">Last Month</MenuItem>
